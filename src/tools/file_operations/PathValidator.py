@@ -1,6 +1,5 @@
 from pathlib import Path
 from typing import Union
-from utils.logger import log_experiment, ActionType
 
 def validate_path(file_path: Union[str, Path], root_dir: Union[str, Path]) -> bool:
     """
@@ -23,41 +22,11 @@ def validate_path(file_path: Union[str, Path], root_dir: Union[str, Path]) -> bo
         file_path.relative_to(root_dir)
     except ValueError:
         # File is outside root_dir → dangerous
-        log_experiment(
-            agent_name="SandboxValidator",
-            model_used="N/A",
-            action=ActionType.FIX,
-            details={
-                "input_prompt": str(file_path),
-                "output_response": "Path traversal attempt detected"
-            },
-            status="FAILURE"
-        )
         return False
 
     # 2️⃣ Only allow .py files
     if file_path.suffix != ".py":
-        log_experiment(
-            agent_name="SandboxValidator",
-            model_used="N/A",
-            action=ActionType.FIX,
-            details={
-                "input_prompt": str(file_path),
-                "output_response": f"Blocked non-Python file ({file_path.suffix})"
-            },
-            status="FAILURE"
-        )
         return False
 
     # ✅ Safe path
-    log_experiment(
-        agent_name="SandboxValidator",
-        model_used="N/A",
-        action=ActionType.FIX,
-        details={
-            "input_prompt": str(file_path),
-            "output_response": "Path validated successfully"
-        },
-        status="SUCCESS"
-    )
     return True

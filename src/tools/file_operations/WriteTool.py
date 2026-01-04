@@ -4,6 +4,10 @@ from typing import Optional
 import tempfile
 import shutil
 import ast
+import os
+
+from .PathValidator import validate_path
+from . import SandboxSetup
 
 
 class WriteTool(BaseTool):
@@ -30,6 +34,43 @@ class WriteTool(BaseTool):
         """
         super().__init__()
         self.create_backup = create_backup
+        # sensible defaults
+        self.max_file_size = 5 * 1024 * 1024  # 5 MB
+        self.validate_python = True
+
+    def _validate_python_syntax(self, content: str) -> tuple[bool, str]:
+        """Validate Python syntax for given content using ast.parse."""
+        try:
+            ast.parse(content)
+            return True, ""
+        except SyntaxError as e:
+            return False, str(e)
+
+    def _write_atomically(self, path: Path, content: str) -> tuple[bool, str]:
+        """Write content to a temp file then atomically replace the destination.
+
+        Returns (success: bool, message: str).
+        """
+        tmp_file = None
+        try:
+            path.parent.mkdir(parents=True, exist_ok=True)
+            # create temp file in same directory for atomic replace
+            fd, tmp_name = tempfile.mkstemp(dir=str(path.parent))
+            tmp_file = tmp_name
+            with os.fdopen(fd, "w", encoding="utf-8") as f:
+                f.write(content)
+
+            # atomically replace
+            os.replace(tmp_name, str(path))
+            return True, ""
+        except Exception as e:
+            # cleanup temp file if present
+            try:
+                if tmp_file and os.path.exists(tmp_file):
+                    os.remove(tmp_file)
+            except Exception:
+                pass
+            return False, str(e)
 
     def _create_backup(self, file_path: Path) -> Optional[str]:
         """
@@ -64,8 +105,22 @@ class WriteTool(BaseTool):
         Returns:
             Success message or error description
         """
-        # Convert to Path object
-        path = Path(file_path)
+        # Ensure sandbox is configured
+        if SandboxSetup.SANDBOX_ROOT is None:
+            return "Error: Sandbox not initialized"
+
+        # Validate path (PathValidator enforces .py and containment)
+        try:
+            ok = validate_path(file_path, SandboxSetup.SANDBOX_ROOT)
+        except Exception as e:
+            return f"Error validating path: {e}"
+
+        if not ok:
+            return f"Error: Unsafe or invalid file path: {file_path}"
+
+        # Convert to Path object under sandbox
+        path = Path(SandboxSetup.SANDBOX_ROOT) / file_path
+        path = path.resolve()
         
         # Check content size
         content_size = len(content.encode('utf-8'))

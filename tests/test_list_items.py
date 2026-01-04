@@ -30,6 +30,8 @@ if repo_root not in sys.path:
     sys.path.insert(0, repo_root)
 
 ListItems = importlib.import_module("src.tools.file_operations.ListItems").ListItems
+SandboxSetup = importlib.import_module("src.tools.file_operations.SandboxSetup")
+setup_project_sandbox = SandboxSetup.setup_project_sandbox
 
 
 def test_list_items_happy(tmp_path):
@@ -38,8 +40,9 @@ def test_list_items_happy(tmp_path):
     (tmp_path / "a.txt").write_text("a")
     (tmp_path / "d").mkdir()
 
+    setup_project_sandbox(tmp_path)
     tool = ListItems()
-    res = tool._run(str(tmp_path))
+    res = tool._run(".")
 
     # split lines and compare sorted entries
     lines = res.splitlines()
@@ -48,17 +51,18 @@ def test_list_items_happy(tmp_path):
 
 
 def test_list_items_nonexistent(tmp_path):
-    missing = tmp_path / "no_such_dir"
+    setup_project_sandbox(tmp_path)
     tool = ListItems()
-    res = tool._run(str(missing))
+    res = tool._run("no_such_dir")
     assert res.startswith("Error listing directory:")
 
 
 def test_arun_matches_run(tmp_path):
     (tmp_path / "file.txt").write_text("x")
+    setup_project_sandbox(tmp_path)
     tool = ListItems()
-    sync = tool._run(str(tmp_path))
-    async_res = asyncio.run(tool._arun(str(tmp_path)))
+    sync = tool._run(".")
+    async_res = asyncio.run(tool._arun("."))
     assert async_res == sync
 
 
@@ -70,8 +74,9 @@ def test_permission_error(tmp_path):
     # remove permissions so iterdir should raise
     p.chmod(0o000)
     try:
+        setup_project_sandbox(tmp_path)
         tool = ListItems()
-        res = tool._run(str(p))
+        res = tool._run("protected")
         assert res.startswith("Error listing directory:")
     finally:
         # restore so pytest can cleanup

@@ -2,6 +2,9 @@ from langchain.tools import BaseTool
 from pathlib import Path
 from typing import Optional
 
+from .PathValidator import validate_path
+from . import SandboxSetup
+
 class ReadTool(BaseTool):
     name = "read file"
     description: str = (
@@ -21,12 +24,25 @@ class ReadTool(BaseTool):
             File content as string or error message
         """
 
-        path = Path(file_path)
+        # Ensure sandbox is configured
+        if SandboxSetup.SANDBOX_ROOT is None:
+            return "Error: Sandbox not initialized"
+
+        # Validate path against sandbox rules
+        try:
+            ok = validate_path(file_path, SandboxSetup.SANDBOX_ROOT)
+        except Exception as e:
+            return f"Error validating path: {e}"
+
+        if not ok:
+            return f"Error: Unsafe or invalid file path: {file_path}"
+
+        path = Path(SandboxSetup.SANDBOX_ROOT) / file_path
+        path = path.resolve()
+
         if not path.is_file():
             return f"Error: The file at {file_path} does not exist."
-        
-        if not path.is_file():
-            return f"Error: Path is not a file: {file_path}"
+
         try:
             with path.open("r", encoding="utf-8") as file:
                 content = file.read()

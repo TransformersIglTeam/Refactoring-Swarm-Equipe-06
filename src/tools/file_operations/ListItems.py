@@ -2,6 +2,8 @@ from langchain.tools import BaseTool
 from pathlib import Path
 from typing import List, Optional
 
+from . import SandboxSetup
+
 
 class ListItems(BaseTool):
     """
@@ -28,9 +30,25 @@ class ListItems(BaseTool):
         Returns:
             Newline-separated string of entry names, or an error message string.
         """
-        p = Path(dir_path)
+        # Ensure sandbox is configured
+        if SandboxSetup.SANDBOX_ROOT is None:
+            return "Error: Sandbox not initialized"
+
+        # Resolve against sandbox root and ensure containment
         try:
-            # Intentionally do not pre-validate path (no .exists() / .is_dir()).
+            p = (Path(SandboxSetup.SANDBOX_ROOT) / dir_path).resolve()
+        except Exception as e:
+            return f"Error resolving path: {e}"
+
+        try:
+            p.relative_to(Path(SandboxSetup.SANDBOX_ROOT))
+        except Exception:
+            return f"Error: Path outside sandbox: {dir_path}"
+
+        if not p.exists() or not p.is_dir():
+            return f"Error listing directory: not a directory: {dir_path}"
+
+        try:
             entries = [item.name for item in p.iterdir()]
             entries.sort()
             return "\n".join(entries)

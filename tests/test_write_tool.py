@@ -27,6 +27,8 @@ if repo_root not in sys.path:
     sys.path.insert(0, repo_root)
 
 WriteTool = importlib.import_module("src.tools.file_operations.WriteTool").WriteTool
+SandboxSetup = importlib.import_module("src.tools.file_operations.SandboxSetup")
+setup_project_sandbox = SandboxSetup.setup_project_sandbox
 
 
 def make_writer(**overrides):
@@ -48,8 +50,9 @@ def make_writer(**overrides):
 
 
 def test_write_success(tmp_path):
-    out = tmp_path / "out.txt"
+    out = tmp_path / "out.py"
     content = "hello write"
+    setup_project_sandbox(tmp_path)
 
     def _write_atomically(self, path, content_arg):
         path.parent.mkdir(parents=True, exist_ok=True)
@@ -58,7 +61,7 @@ def test_write_success(tmp_path):
         return True, ""
 
     wt = make_writer(create_backup=False, _write_atomically=_write_atomically)
-    res = wt._run(str(out), content)
+    res = wt._run(out.name, content)
 
     assert "Success: Wrote" in res
     assert out.read_text(encoding="utf-8") == content
@@ -76,8 +79,9 @@ def test_backup_created(tmp_path):
             f.write(content_arg)
         return True, ""
 
+    setup_project_sandbox(tmp_path)
     wt = make_writer(create_backup=True, _write_atomically=_write_atomically)
-    res = wt._run(str(out), new_content)
+    res = wt._run(out.name, new_content)
 
     # Expect success and a backup mention
     assert "Success: Wrote" in res
@@ -88,34 +92,36 @@ def test_backup_created(tmp_path):
 
 
 def test_permission_error_writing(tmp_path):
-    out = tmp_path / "nope.txt"
+    out = tmp_path / "nope.py"
     content = "data"
 
     def _write_atomically(self, path, content_arg):
         raise PermissionError("no write")
 
+    setup_project_sandbox(tmp_path)
     wt = make_writer(_write_atomically=_write_atomically)
-    res = wt._run(str(out), content)
+    res = wt._run(out.name, content)
     assert "Permission denied" in res
 
 
 def test_content_too_large(tmp_path):
-    out = tmp_path / "big.txt"
+    out = tmp_path / "big.py"
     content = "x" * 1024  # 1 KB
+    setup_project_sandbox(tmp_path)
 
     wt = make_writer(max_file_size=10)  # tiny max to trigger
-    res = wt._run(str(out), content)
+    res = wt._run(out.name, content)
     assert "Error: Content too large" in res
 
 
 def test_invalid_python_syntax(tmp_path):
     out = tmp_path / "bad.py"
     content = "def f(:\n    pass"
-
+    setup_project_sandbox(tmp_path)
     def _validate_python_syntax(self, content_arg):
         # simulate detection of invalid syntax
         return False, "unexpected EOF"
 
     wt = make_writer(validate_python=True, _validate_python_syntax=_validate_python_syntax)
-    res = wt._run(str(out), content)
+    res = wt._run(out.name, content)
     assert "Invalid Python syntax" in res

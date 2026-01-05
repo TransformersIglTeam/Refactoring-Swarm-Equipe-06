@@ -8,8 +8,8 @@ from pathlib import Path
 ROOT = Path(__file__).resolve().parents[1]
 sys.path.append(str(ROOT / "src"))
 
-from tools.file_operations.SandboxSetup import setup_project_sandbox
-from tools.file_operations.PathValidator import validate_path
+from utils.SandboxSetup import setup_project_sandbox
+from utils.PathValidator import validate_path
 
 
 

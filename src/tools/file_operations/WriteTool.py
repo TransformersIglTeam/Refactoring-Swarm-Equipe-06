@@ -6,8 +6,8 @@ import shutil
 import ast
 import os
 
-from .PathValidator import validate_path
-from . import SandboxSetup
+from ..utils.PathValidator import validate_path
+from ..utils import SandboxSetup
 
 
 class WriteTool(BaseTool):

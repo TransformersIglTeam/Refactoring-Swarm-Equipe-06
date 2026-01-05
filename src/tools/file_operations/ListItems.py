@@ -2,7 +2,7 @@ from langchain.tools import BaseTool
 from pathlib import Path
 from typing import List, Optional
 
-from . import SandboxSetup
+from ..utils import SandboxSetup
 
 
 class ListItems(BaseTool):

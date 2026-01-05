@@ -30,7 +30,7 @@ if repo_root not in sys.path:
     sys.path.insert(0, repo_root)
 
 ListItems = importlib.import_module("src.tools.file_operations.ListItems").ListItems
-SandboxSetup = importlib.import_module("src.tools.file_operations.SandboxSetup")
+SandboxSetup = importlib.import_module("src.utils.SandboxSetup")
 setup_project_sandbox = SandboxSetup.setup_project_sandbox
 
 

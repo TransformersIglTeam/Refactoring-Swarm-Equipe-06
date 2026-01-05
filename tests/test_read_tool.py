@@ -31,7 +31,7 @@ if repo_root not in sys.path:
 ReadTool = importlib.import_module("src.tools.file_operations.ReadTool").ReadTool
 
 # Import sandbox setup after sys.path has been fixed
-SandboxSetup = importlib.import_module("src.tools.file_operations.SandboxSetup")
+SandboxSetup = importlib.import_module("src.utils.SandboxSetup")
 setup_project_sandbox = SandboxSetup.setup_project_sandbox
 
 

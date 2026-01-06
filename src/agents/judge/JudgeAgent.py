@@ -75,7 +75,7 @@ class JudgeAgent:
         # If LLM (Gemini) is available, ask it to analyze the test output and
         # produce structured JSON with decision, failures and suggestions.
         prompt = (
-            "You are an automated judge (Gemini). Analyze the pytest output and "
+            "You are an automated judge . Analyze the pytest output and "
             "return a JSON object with keys: decision, reason, failures, suggestions. "
             "- decision: one of PASS, RETRY, MAX_ITERATIONS.\n"
             "- reason: short human-readable reason.\n"
@@ -152,7 +152,6 @@ class JudgeAgent:
                 suggestions=suggestions
             )
 
-        # Fallback: use existing analyzer to create a decision
         return self.analyzer.analyze(test_result, iteration=iteration)
     
     def judge_and_print(self, target_dir: str, iteration: int = 1) -> JudgeResult:

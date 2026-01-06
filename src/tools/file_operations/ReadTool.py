@@ -2,8 +2,8 @@ from langchain.tools import BaseTool
 from pathlib import Path
 from typing import Optional
 
-from ..utils.PathValidator import validate_path
-from ..utils import SandboxSetup
+from src.utils.PathValidator import validate_path
+from src.utils import SandboxSetup
 
 class ReadTool(BaseTool):
     name = "read file"

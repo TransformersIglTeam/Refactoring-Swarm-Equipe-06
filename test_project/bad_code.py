@@ -20,5 +20,4 @@ def complex_function(x, y, z):
 def another_function():
     a = 1
     b = 2
-    # Missing docstring
     return a + b

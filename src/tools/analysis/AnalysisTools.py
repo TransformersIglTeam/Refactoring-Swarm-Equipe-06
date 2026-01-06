@@ -129,7 +129,8 @@ class DocstringAnalysisTool(BaseTool):
             results = {
                 "files_analyzed": 0,
                 "missing_docstrings": [],
-                "incomplete_docstrings": []
+                "incomplete_docstrings": [],
+                "errors": []
             }
 
             if resolved_path.is_file() and resolved_path.suffix == '.py':
@@ -168,6 +169,10 @@ class DocstringAnalysisTool(BaseTool):
                     results["files_analyzed"] += 1
 
                 except Exception as e:
+                    results["errors"].append({
+                        "file": str(file_path),
+                        "error": str(e)
+                    })
                     continue
 
             return json.dumps(results, indent=2)

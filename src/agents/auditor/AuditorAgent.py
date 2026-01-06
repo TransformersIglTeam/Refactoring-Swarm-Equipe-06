@@ -26,7 +26,7 @@ class AuditorAgent(BaseAgent):
             ReadTool(),
             ListItems(),
             PylintAnalysisTool(),
-            ComplexityAnalysisTool(),
+            # ComplexityAnalysisTool(),  # Disabled as radon is not installed
             DocstringAnalysisTool(),
             WriteTool()
         ]

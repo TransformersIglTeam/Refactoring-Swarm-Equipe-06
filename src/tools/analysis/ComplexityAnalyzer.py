@@ -8,27 +8,22 @@ class ComplexityAnalyzer:
 
     def run_analysis(self, target_path):
         """Runs radon to get complexity (CC) and maintainability (MI) metrics."""
+        try:
+            import radon.complexity as cc
+            import radon.metrics as mi
+        except ImportError:
+            return {"error": "Radon library is not installed. Please install radon to use complexity analysis."}
+        
         target_path = os.path.abspath(target_path)
         
-        
-        cc_command = ["radon", "cc", target_path, "--json"]
-        
-        
-        mi_command = ["radon", "mi", target_path, "--json"]
-
         try:
+            # Use radon API instead of subprocess
+            cc_results = cc.cc_visit(target_path)
+            mi_results = mi.mi_visit(target_path, multi=True)
             
-
-            cc_result = subprocess.run(cc_command, capture_output=True, text=True, timeout=self.timeout)
-            
-
-            mi_result = subprocess.run(mi_command, capture_output=True, text=True, timeout=self.timeout)
-
-            # nreturniw a merged dictionary
             return {
-                "complexity": json.loads(cc_result.stdout) if cc_result.stdout else {},
-                "maintainability": json.loads(mi_result.stdout) if mi_result.stdout else {},
-                "error": cc_result.stderr if cc_result.returncode != 0 else None
+                "complexity": [block._asdict() for block in cc_results],
+                "maintainability": mi_results
             }
         except Exception as e:
             return {"error": str(e)}

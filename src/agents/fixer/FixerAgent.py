@@ -17,7 +17,7 @@ class FixerAgent(BaseAgent):
     """
     Fixer Agent responsible for applying code fixes using available tools.
     """
-    def __init__(self, model_name: str = "gemini-2.5-flash", tools: Optional[List[BaseTool]] = None):
+    def __init__(self, model_name: str = "gemini-2.5-flash-lite", tools: Optional[List[BaseTool]] = None):
         super().__init__(model_name=model_name)
         self.agent_name = "Fixer_Agent"
         

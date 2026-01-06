@@ -1,37 +1,34 @@
-from typing import List, Optional, Dict, Any
-from pydantic import BaseModel, Field
+from typing import List, Optional, Dict, Any, TypedDict, Annotated
+import operator
 
-class AgentState(BaseModel):
+def add_item(current: List, new: List) -> List:
+    if not current:
+        return new
+    return current + new
+
+class AgentState(TypedDict):
     """
     Shared state for the multi-agent system.
     Tracks the progress of fixing a codebase.
     """
-    project_path: str = Field(description="Path to the project being fixed")
-    error_context: str = Field(description="Initial error report or traceback")
-    current_iteration: int = Field(default=0, description="Current fix attempt iteration")
-    max_iterations: int = Field(default=5, description="Maximum number of fix attempts")
+    project_path: str
+    error_context: str
+    current_iteration: int
+    max_iterations: int
     
     # Analysis
-    analysis_result: Optional[str] = Field(default=None, description="Root cause analysis from Analyzer")
+    analysis_result: Optional[str]
     
     # Fix
-    proposed_fixes: List[str] = Field(default_factory=list, description="List of proposed code changes/diffs")
+    proposed_fixes: Annotated[List[str], add_item]
     
     # Verification (Judge)
-    judge_feedback: Optional[str] = Field(default=None, description="Feedback from the Judge")
-    is_fixed: bool = Field(default=False, description="Whether the issue is resolved")
+    judge_feedback: Optional[str]
+    is_fixed: bool
     
     # Audit
-    audit_report: Optional[str] = Field(default=None, description="Security and style audit report")
-    audit_passed: bool = Field(default=False, description="Whether the audit passed")
+    audit_report: Optional[str]
+    audit_passed: bool
     
     # History
-    history: List[Dict[str, Any]] = Field(default_factory=list, description="Log of actions taken")
-
-    def add_history(self, agent_name: str, action: str, result: Any):
-        self.history.append({
-            "agent": agent_name,
-            "action": action,
-            "result": result,
-            "iteration": self.current_iteration
-        })
+    history: Annotated[List[Dict[str, Any]], add_item]

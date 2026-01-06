@@ -1,6 +1,7 @@
 from langchain.tools import BaseTool
 from pathlib import Path
-from typing import Optional
+from typing import Optional, Type
+from pydantic import BaseModel, Field
 import tempfile
 import shutil
 import ast
@@ -10,33 +11,25 @@ from src.utils.PathValidator import validate_path
 from src.utils import SandboxSetup
 
 
+class WriteToolInput(BaseModel):
+    file_path: str = Field(..., description="The relative path to the file to write.")
+    content: str = Field(..., description="The full content to write to the file.")
+
+
 class WriteTool(BaseTool):
-    name = "write file"
+    name = "write_file"
     description: str = (
         "Writes content to a file. "
-        "Input should be a JSON string with 'file_path' and 'content' keys. "
-        "Example: {\"file_path\": \"path/to/file.py\", \"content\": \"print('hello')\"} "
-        "Creates parent directories if they don't exist."
+        "Useful for creating new files or overwriting existing ones."
     )
+    args_schema: Type[BaseModel] = WriteToolInput
+    
     create_backup: bool = True
+    max_file_size: int = 5 * 1024 * 1024
+    validate_python: bool = True
 
-    def __init__(
-        self, 
-        create_backup: bool = True
-    ):
-        """
-        Initialize the WriteFileTool.
-        
-        Args:
-            max_file_size: Maximum file size in bytes (default: 5MB)
-            validate_python: Validate Python syntax before writing (default: True)
-            create_backup: Create backup of existing files (default: True)
-        """
-        super().__init__()
-        self.create_backup = create_backup
-        # sensible defaults
-        self.max_file_size = 5 * 1024 * 1024  # 5 MB
-        self.validate_python = True
+    def __init__(self, **kwargs):
+        super().__init__(**kwargs)
 
     def _validate_python_syntax(self, content: str) -> tuple[bool, str]:
         """Validate Python syntax for given content using ast.parse."""
@@ -47,10 +40,7 @@ class WriteTool(BaseTool):
             return False, str(e)
 
     def _write_atomically(self, path: Path, content: str) -> tuple[bool, str]:
-        """Write content to a temp file then atomically replace the destination.
-
-        Returns (success: bool, message: str).
-        """
+        """Write content to a temp file then atomically replace the destination."""
         tmp_file = None
         try:
             path.parent.mkdir(parents=True, exist_ok=True)
@@ -73,15 +63,7 @@ class WriteTool(BaseTool):
             return False, str(e)
 
     def _create_backup(self, file_path: Path) -> Optional[str]:
-        """
-        Create a timestamped backup of existing file.
-        
-        Args:
-            file_path: Path to file to backup
-            
-        Returns:
-            Path to backup file or None if file doesn't exist
-        """
+        """Create a timestamped backup of existing file."""
         if not file_path.exists():
             return None
         
@@ -95,16 +77,7 @@ class WriteTool(BaseTool):
             return f"Backup failed: {str(e)}"
 
     def _run(self, file_path: str, content: str) -> str:
-        """
-        Write content to file with safety checks.
-        
-        Args:
-            file_path: Path where to write the file
-            content: Content to write to the file
-            
-        Returns:
-            Success message or error description
-        """
+        """Write content to file with safety checks."""
         # Ensure sandbox is configured
         if SandboxSetup.SANDBOX_ROOT is None:
             return "Error: Sandbox not initialized"
@@ -158,16 +131,5 @@ class WriteTool(BaseTool):
         except Exception as e:
             return f"Error writing file: {str(e)}"
     
-
-    def _arun(self, file_path: str, content: str) -> str:
-        """
-        Async version - not implemented.
-        
-        Args:
-            file_path: Path where to write the file
-            content: Content to write to the file
-            
-        Raises:
-            NotImplementedError: Async writing not supported
-        """
+    async def _arun(self, file_path: str, content: str) -> str:
         raise NotImplementedError("Async writing not implemented")

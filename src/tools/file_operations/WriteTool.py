@@ -54,7 +54,6 @@ class WriteTool(BaseTool):
             os.replace(tmp_name, str(path))
             return True, ""
         except Exception as e:
-            # cleanup temp file if present
             try:
                 if tmp_file and os.path.exists(tmp_file):
                     os.remove(tmp_file)
@@ -63,14 +62,34 @@ class WriteTool(BaseTool):
             return False, str(e)
 
     def _create_backup(self, file_path: Path) -> Optional[str]:
-        """Create a timestamped backup of existing file."""
+        """Create a timestamped backup of existing file in the _sandbox directory."""
         if not file_path.exists():
             return None
         
         try:
             from datetime import datetime
             timestamp = datetime.now().strftime("%Y%m%d_%H%M%S")
-            backup_path = file_path.parent / f"{file_path.stem}.backup_{timestamp}{file_path.suffix}"
+            
+            # Use _sandbox_backup directory for backups
+            if SandboxSetup.SANDBOX_ROOT:
+                backup_dir = SandboxSetup.SANDBOX_ROOT / "_sandbox_backup"
+            else:
+                # Fallback, though _run checks SANDBOX_ROOT
+                backup_dir = file_path.parent / "_sandbox_backup"
+            
+            backup_dir.mkdir(parents=True, exist_ok=True)
+            
+            # Create a flat filename from the relative path to avoid collision
+            try:
+                # Ensure we use the relative path from the sandbox root
+                rel_path = file_path.relative_to(SandboxSetup.SANDBOX_ROOT)
+                flat_name = str(rel_path).replace(os.sep, "_")
+            except Exception:
+                flat_name = file_path.name
+            
+            backup_filename = f"{Path(flat_name).stem}.backup_{timestamp}{file_path.suffix}"
+            backup_path = backup_dir / backup_filename
+            
             shutil.copy2(file_path, backup_path)
             return str(backup_path)
         except Exception as e:

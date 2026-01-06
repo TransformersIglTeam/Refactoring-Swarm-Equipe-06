@@ -44,7 +44,7 @@ class BaseAgent:
             # Log success
             try:
                 log_experiment(
-                    agent_name="BaseAgen llm ",
+                    agent_name="BaseAgent",
                     model_used=self.model_name,
                     action=ActionType.DEBUG,
                     details={
@@ -59,7 +59,6 @@ class BaseAgent:
 
             return llm
         except Exception as e:
-            # Log the instantiation/import error and fall back
             try:
                 log_experiment(
                     agent_name="BaseAgent",
@@ -75,7 +74,6 @@ class BaseAgent:
             except Exception:
                 pass
 
-        # If we get here, no LLM wrapper was found
         try:
             log_experiment(
                 agent_name="BaseAgent",

@@ -128,8 +128,10 @@ class WriteTool(BaseTool):
                 return f"Error: Invalid Python syntax - {error_msg}"
         
         # Create backup if file exists and backup is enabled
+        # Skip backup for .md files (reports should be overwritten without backup)
         backup_info = ""
-        if self.create_backup and path.exists():
+        should_create_backup = self.create_backup and path.exists() and path.suffix != '.md'
+        if should_create_backup:
             backup_path = self._create_backup(path)
             if backup_path:
                 backup_info = f" (Backup created: {backup_path})"

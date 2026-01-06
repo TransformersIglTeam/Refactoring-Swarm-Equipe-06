@@ -17,7 +17,3 @@ def complex_function(x, y, z):
         print("X not positive")
         return 0
 
-def another_function():
-    a = 1
-    b = 2
-    return a + b

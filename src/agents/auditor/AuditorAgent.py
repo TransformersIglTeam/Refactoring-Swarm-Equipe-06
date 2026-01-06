@@ -68,18 +68,17 @@ class AuditorAgent(BaseAgent):
             
             from src.agents.auditor.prompts import AUDITOR_AGENT_SYSTEM_PROMPT
             
-            agent_kwargs = {
-                "system_message": AUDITOR_AGENT_SYSTEM_PROMPT,
-                "input_variables": ["input", "agent_scratchpad"]
-            }
-
+            # Always use prefix_messages for chat models (ChatGoogleGenerativeAI)
+            # The chat_llm is ChatGoogleGenerativeAI, so we should always pass the system prompt
+            agent_kwargs_for_init = {'prefix_messages': [("system", AUDITOR_AGENT_SYSTEM_PROMPT)]}
+            
             return initialize_agent(
                 tools=self.tools,
                 llm=chat_llm,
                 agent=AgentType.STRUCTURED_CHAT_ZERO_SHOT_REACT_DESCRIPTION,
                 verbose=True,
                 handle_parsing_errors=True,
-                agent_kwargs={'prefix_messages': [("system", AUDITOR_AGENT_SYSTEM_PROMPT)]} if 'chat' in self.model_name else None
+                agent_kwargs=agent_kwargs_for_init
             )
         except Exception as e:
             print(f"Failed to create agent: {e}")

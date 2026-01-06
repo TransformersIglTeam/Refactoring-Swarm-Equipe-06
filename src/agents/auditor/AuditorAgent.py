@@ -3,29 +3,32 @@ from typing import List, Optional
 
 from langchain.agents import AgentExecutor
 
-from langchain_google_genai import GoogleGenerativeAI
 from langchain.tools import BaseTool
 
 from src.agents.judge.BaseAgent import BaseAgent
 from src.tools.file_operations.WriteTool import WriteTool
 from src.tools.file_operations.ReadTool import ReadTool
 from src.tools.file_operations.ListItems import ListItems
+from src.tools.analysis.AnalysisTools import PylintAnalysisTool, ComplexityAnalysisTool, DocstringAnalysisTool
 from src.utils import SandboxSetup
 from src.utils.logger import log_experiment, ActionType
 
-class FixerAgent(BaseAgent):
+class AuditorAgent(BaseAgent):
     """
-    Fixer Agent responsible for applying code fixes using available tools.
+    Auditor Agent responsible for analyzing code and generating reports.
     """
     def __init__(self, model_name: str = "gemini-2.5-flash", tools: Optional[List[BaseTool]] = None):
         super().__init__(model_name=model_name)
-        self.agent_name = "Fixer_Agent"
+        self.agent_name = "Auditor_Agent"
         
         # Initialize default tools
         self.tools = [
-            WriteTool(),
             ReadTool(),
-            ListItems()
+            ListItems(),
+            PylintAnalysisTool(),
+            ComplexityAnalysisTool(),
+            DocstringAnalysisTool(),
+            WriteTool()
         ]
         
         # Add any extra tools passed in
@@ -63,10 +66,10 @@ class FixerAgent(BaseAgent):
             # but the user had issues with imports. Let's stick to initialize_agent but inject our system prompt
             # into the 'agent_kwargs' which is the standard way to customize prompts in legacy agents.
             
-            from src.agents.fixer.prompts import FIXER_SYSTEM_PROMPT
+            from src.agents.auditor.prompts import AUDITOR_AGENT_SYSTEM_PROMPT
             
             agent_kwargs = {
-                "system_message": FIXER_SYSTEM_PROMPT,
+                "system_message": AUDITOR_AGENT_SYSTEM_PROMPT,
                 "input_variables": ["input", "agent_scratchpad"]
             }
 
@@ -76,36 +79,35 @@ class FixerAgent(BaseAgent):
                 agent=AgentType.STRUCTURED_CHAT_ZERO_SHOT_REACT_DESCRIPTION,
                 verbose=True,
                 handle_parsing_errors=True,
-                agent_kwargs={'prefix_messages': [("system", FIXER_SYSTEM_PROMPT)]} if 'chat' in self.model_name else None
+                agent_kwargs={'prefix_messages': [("system", AUDITOR_AGENT_SYSTEM_PROMPT)]} if 'chat' in self.model_name else None
             )
         except Exception as e:
             print(f"Failed to create agent: {e}")
             return None
 
-    def fix(self, project_path: str, analysis_result: str, judge_feedback: Optional[str] = "") -> str:
+    def audit(self, project_path: str) -> str:
         """
-        Main fix generation and application loop using tools.
+        Main audit loop using tools.
         """
         # Ensure Sandbox is set (crucial for tools)
         if SandboxSetup.SANDBOX_ROOT is None:
             SandboxSetup.SANDBOX_ROOT = project_path
         
         input_text = (
-            f"Fix the project at {project_path}.\n"
-            f"ANALYSIS: {analysis_result}\n"
-            f"FEEDBACK: {judge_feedback}\n"
-            f"Please identify the file to fix, read it, and then overwrite it with the fixed content."
+            f"Audit the project at {project_path}.\n"
+            f"Please analyze the code, create a summary and a TODO list of fixes.\n"
+            f"Save the report to a file named 'audit_report.md' in the sandbox."
         )
         
         if self.agent_executor:
             try:
                 result = self.agent_executor.invoke({"input": input_text})
-                output = result.get("output", "Fix applied (agent finished).")
+                output = result.get("output", "Audit completed.")
                 
                 log_experiment(
                     agent_name=self.agent_name,
                     model_used=self.model_name,
-                    action=ActionType.CODE_MODIFICATION,
+                    action=ActionType.ANALYSIS,
                     details={"input": input_text, "output": output},
                     status="SUCCESS"
                 )

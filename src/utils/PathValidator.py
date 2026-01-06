@@ -24,8 +24,8 @@ def validate_path(file_path: Union[str, Path], root_dir: Union[str, Path]) -> bo
         # File is outside root_dir → dangerous
         return False
 
-    # 2️⃣ Only allow .py files
-    if file_path.suffix != ".py":
+    # 2️⃣ Only allow .py files and .md files (for reports)
+    if file_path.suffix not in [".py", ".md"]:
         return False
 
     # ✅ Safe path

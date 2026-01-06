@@ -17,7 +17,7 @@ class AuditorAgent(BaseAgent):
     """
     Auditor Agent responsible for analyzing code and generating reports.
     """
-    def __init__(self, model_name: str = "gemini-2.5-flash", tools: Optional[List[BaseTool]] = None):
+    def __init__(self, model_name: str = "gemini-2.5-flash-lite", tools: Optional[List[BaseTool]] = None):
         super().__init__(model_name=model_name)
         self.agent_name = "Auditor_Agent"
         
@@ -93,10 +93,15 @@ class AuditorAgent(BaseAgent):
         if SandboxSetup.SANDBOX_ROOT is None:
             SandboxSetup.SANDBOX_ROOT = project_path
         
+        # Get the sandbox root path for the prompt
+        sandbox_root = SandboxSetup.SANDBOX_ROOT
+        
         input_text = (
-            f"Audit the project at {project_path}.\n"
+            f"Audit the project in the sandbox directory.\n"
+            f"The sandbox root is: {sandbox_root}\n"
+            f"All file paths should be relative to the sandbox root (use '.' for current directory, or file names like 'bad_code.py').\n"
             f"Please analyze the code, create a summary and a TODO list of fixes.\n"
-            f"Save the report to a file named 'audit_report.md' in the sandbox."
+            f"Save the report to a file named 'audit_report.md' in the sandbox root directory."
         )
         
         if self.agent_executor:
@@ -108,7 +113,7 @@ class AuditorAgent(BaseAgent):
                     agent_name=self.agent_name,
                     model_used=self.model_name,
                     action=ActionType.ANALYSIS,
-                    details={"input": input_text, "output": output},
+                    details={"input_prompt": input_text, "output_response": output},
                     status="SUCCESS"
                 )
                 return output

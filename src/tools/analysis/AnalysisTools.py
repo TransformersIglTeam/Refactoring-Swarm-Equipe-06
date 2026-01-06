@@ -136,7 +136,8 @@ class DocstringAnalysisTool(BaseTool):
                 files_to_check = [resolved_path]
             elif resolved_path.is_dir():
                 files_to_check = []
-                for root, dirs, files in os.walk(resolved_path):
+                # Convert Path to string for os.walk
+                for root, dirs, files in os.walk(str(resolved_path)):
                     for file in files:
                         if file.endswith('.py'):
                             files_to_check.append(Path(root) / file)

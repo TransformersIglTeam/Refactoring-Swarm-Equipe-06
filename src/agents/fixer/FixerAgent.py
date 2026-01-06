@@ -89,8 +89,8 @@ class FixerAgent(BaseAgent):
                 log_experiment(
                     agent_name=self.agent_name,
                     model_used=self.model_name,
-                    action=ActionType.CODE_MODIFICATION,
-                    details={"input": input_text, "output": output},
+                    action=ActionType.FIX,
+                    details={"input_prompt": input_text, "output_response": output},
                     status="SUCCESS"
                 )
                 return output

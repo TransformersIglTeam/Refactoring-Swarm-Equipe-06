@@ -2147,5 +2147,857 @@
             "output_response": "Instance created: <class 'langchain_google_genai.llms.GoogleGenerativeAI'>"
         },
         "status": "SUCCESS"
+    },
+    {
+        "id": "ff8930ff-ad6c-4a36-b1c0-aebf362665ea",
+        "timestamp": "2026-01-06T14:24:55.623963",
+        "agent": "BaseAgent",
+        "model": "gemini-2.5-flash",
+        "action": "DEBUG",
+        "details": {
+            "input_prompt": "Instantiate langchain_google_genai.GoogleGenAI for model gemini-2.5-flash",
+            "output_response": "Instance created: <class 'test_auditor_agent._install_stubs.<locals>.GoogleGenerativeAI'>"
+        },
+        "status": "SUCCESS"
+    },
+    {
+        "id": "9162f46d-8b20-427e-9c88-4bfde2776bd1",
+        "timestamp": "2026-01-06T14:25:00.195314",
+        "agent": "BaseAgent",
+        "model": "gemini-2.5-flash",
+        "action": "DEBUG",
+        "details": {
+            "input_prompt": "Instantiate langchain_google_genai.GoogleGenAI for model gemini-2.5-flash",
+            "output_response": "Instance created: <class 'test_auditor_agent._install_stubs.<locals>.GoogleGenerativeAI'>"
+        },
+        "status": "SUCCESS"
+    },
+    {
+        "id": "ac87a76d-5fa6-4abb-8dc7-140e270003c0",
+        "timestamp": "2026-01-06T14:25:00.217071",
+        "agent": "Auditor_Agent",
+        "model": "gemini-2.5-flash",
+        "action": "CODE_ANALYSIS",
+        "details": {
+            "input_prompt": "You are an expert Senior Code Auditor Agent.\nYour task is to analyze static analysis results and provide clear, actionable insights about code quality, bugs, and documentation issues.\n\n### ANALYSIS CAPABILITIES\nYou analyze outputs from:\n- Pylint: Code quality and style issues\n- Radon: Cyclomatic complexity metrics\n- Custom checks: Missing docstrings and documentation\n\n### PROCESS (Chain of Thought)\n1. REVIEW: Examine the audit output for patterns and severity\n2. SUMMARIZE: Create a concise summary of findings\n3. RECOMMEND: Provide specific, prioritized recommendations\n4. STRUCTURE: Return clean JSON with summary and recommendations\n\n### OUTPUT FORMAT\nRespond with pure JSON only:\n{\n  \"summary\": \"short human-readable summary\",\n  \"recommendations\": [\"recommendation 1\", \"recommendation 2\", ...]\n}\n\n### GUIDELINES\n- Be specific about file paths and issue types\n- Prioritize critical issues (bugs, security) over style\n- Suggest concrete fixes when possible\n- Keep recommendations actionable and brief\n\n\nANALYSIS DATA:\nAUDIT_OUTPUT:\nMock pylint output\nMock complexity output\n\nISSUES_FOUND: 3\nTOTAL_FILES: 5\n",
+            "output_response": "{\"summary\": \"Found 3 issues in 5 files\", \"recommendations\": [\"Fix critical bugs\", \"Add docstrings\"]}"
+        },
+        "status": "SUCCESS"
+    },
+    {
+        "id": "4a7de9b3-b2b6-42d8-9a94-39e3c648e7ec",
+        "timestamp": "2026-01-06T14:25:00.244442",
+        "agent": "BaseAgent",
+        "model": "gemini-2.5-flash",
+        "action": "DEBUG",
+        "details": {
+            "input_prompt": "Instantiate langchain_google_genai.GoogleGenAI for model gemini-2.5-flash",
+            "output_response": "Instance created: <class 'test_auditor_agent._install_stubs.<locals>.GoogleGenerativeAI'>"
+        },
+        "status": "SUCCESS"
+    },
+    {
+        "id": "1727b3ab-5ffd-421c-8cd1-353a29653a17",
+        "timestamp": "2026-01-06T14:25:00.265379",
+        "agent": "Auditor_Agent",
+        "model": "gemini-2.5-flash",
+        "action": "CODE_ANALYSIS",
+        "details": {
+            "input_prompt": "You are an expert Senior Code Auditor Agent.\nYour task is to analyze static analysis results and provide clear, actionable insights about code quality, bugs, and documentation issues.\n\n### ANALYSIS CAPABILITIES\nYou analyze outputs from:\n- Pylint: Code quality and style issues\n- Radon: Cyclomatic complexity metrics\n- Custom checks: Missing docstrings and documentation\n\n### PROCESS (Chain of Thought)\n1. REVIEW: Examine the audit output for patterns and severity\n2. SUMMARIZE: Create a concise summary of findings\n3. RECOMMEND: Provide specific, prioritized recommendations\n4. STRUCTURE: Return clean JSON with summary and recommendations\n\n### OUTPUT FORMAT\nRespond with pure JSON only:\n{\n  \"summary\": \"short human-readable summary\",\n  \"recommendations\": [\"recommendation 1\", \"recommendation 2\", ...]\n}\n\n### GUIDELINES\n- Be specific about file paths and issue types\n- Prioritize critical issues (bugs, security) over style\n- Suggest concrete fixes when possible\n- Keep recommendations actionable and brief\n\n\nANALYSIS DATA:\nAUDIT_OUTPUT:\nMock pylint output\nMock complexity output\n\nISSUES_FOUND: 3\nTOTAL_FILES: 5\n",
+            "output_response": ""
+        },
+        "status": "NO_RESPONSE"
+    },
+    {
+        "id": "a14b4b73-b6e6-4d16-8d30-0dc7e235ca0a",
+        "timestamp": "2026-01-06T14:25:00.294569",
+        "agent": "BaseAgent",
+        "model": "gemini-2.5-flash",
+        "action": "DEBUG",
+        "details": {
+            "input_prompt": "Instantiate langchain_google_genai.GoogleGenAI for model gemini-2.5-flash",
+            "output_response": "Instance created: <class 'test_auditor_agent._install_stubs.<locals>.GoogleGenerativeAI'>"
+        },
+        "status": "SUCCESS"
+    },
+    {
+        "id": "e2d9f226-53eb-4389-a6dc-9952636a11a8",
+        "timestamp": "2026-01-06T14:25:00.316653",
+        "agent": "Auditor_Agent",
+        "model": "gemini-2.5-flash",
+        "action": "CODE_ANALYSIS",
+        "details": {
+            "input_prompt": "You are an expert Senior Code Auditor Agent.\nYour task is to analyze static analysis results and provide clear, actionable insights about code quality, bugs, and documentation issues.\n\n### ANALYSIS CAPABILITIES\nYou analyze outputs from:\n- Pylint: Code quality and style issues\n- Radon: Cyclomatic complexity metrics\n- Custom checks: Missing docstrings and documentation\n\n### PROCESS (Chain of Thought)\n1. REVIEW: Examine the audit output for patterns and severity\n2. SUMMARIZE: Create a concise summary of findings\n3. RECOMMEND: Provide specific, prioritized recommendations\n4. STRUCTURE: Return clean JSON with summary and recommendations\n\n### OUTPUT FORMAT\nRespond with pure JSON only:\n{\n  \"summary\": \"short human-readable summary\",\n  \"recommendations\": [\"recommendation 1\", \"recommendation 2\", ...]\n}\n\n### GUIDELINES\n- Be specific about file paths and issue types\n- Prioritize critical issues (bugs, security) over style\n- Suggest concrete fixes when possible\n- Keep recommendations actionable and brief\n\n\nANALYSIS DATA:\nAUDIT_OUTPUT:\nMock pylint output\nMock complexity output\n\nISSUES_FOUND: 3\nTOTAL_FILES: 5\n",
+            "output_response": "Invalid JSON response"
+        },
+        "status": "SUCCESS"
+    },
+    {
+        "id": "5a97fd00-e746-4486-b08a-90829312fa7d",
+        "timestamp": "2026-01-06T14:25:00.343050",
+        "agent": "BaseAgent",
+        "model": "gemini-2.5-flash",
+        "action": "DEBUG",
+        "details": {
+            "input_prompt": "Instantiate langchain_google_genai.GoogleGenAI for model gemini-2.5-flash",
+            "output_response": "Instance created: <class 'test_auditor_agent._install_stubs.<locals>.GoogleGenerativeAI'>"
+        },
+        "status": "SUCCESS"
+    },
+    {
+        "id": "3daa0afc-84a7-4ac8-ae76-46be3821d66d",
+        "timestamp": "2026-01-06T14:25:00.370738",
+        "agent": "BaseAgent",
+        "model": "gemini-2.5-flash",
+        "action": "DEBUG",
+        "details": {
+            "input_prompt": "Instantiate langchain_google_genai.GoogleGenAI for model gemini-2.5-flash",
+            "output_response": "Instance created: <class 'test_auditor_agent._install_stubs.<locals>.GoogleGenerativeAI'>"
+        },
+        "status": "SUCCESS"
+    },
+    {
+        "id": "f91faf34-7e63-4157-a292-763a9584a1fa",
+        "timestamp": "2026-01-06T14:25:00.393453",
+        "agent": "Auditor_Agent",
+        "model": "gemini-2.5-flash",
+        "action": "CODE_ANALYSIS",
+        "details": {
+            "input_prompt": "You are an expert Senior Code Auditor Agent.\nYour task is to analyze static analysis results and provide clear, actionable insights about code quality, bugs, and documentation issues.\n\n### ANALYSIS CAPABILITIES\nYou analyze outputs from:\n- Pylint: Code quality and style issues\n- Radon: Cyclomatic complexity metrics\n- Custom checks: Missing docstrings and documentation\n\n### PROCESS (Chain of Thought)\n1. REVIEW: Examine the audit output for patterns and severity\n2. SUMMARIZE: Create a concise summary of findings\n3. RECOMMEND: Provide specific, prioritized recommendations\n4. STRUCTURE: Return clean JSON with summary and recommendations\n\n### OUTPUT FORMAT\nRespond with pure JSON only:\n{\n  \"summary\": \"short human-readable summary\",\n  \"recommendations\": [\"recommendation 1\", \"recommendation 2\", ...]\n}\n\n### GUIDELINES\n- Be specific about file paths and issue types\n- Prioritize critical issues (bugs, security) over style\n- Suggest concrete fixes when possible\n- Keep recommendations actionable and brief\n\n\nANALYSIS DATA:\nAUDIT_OUTPUT:\nMock pylint output\nMock complexity output\n\nISSUES_FOUND: 3\nTOTAL_FILES: 5\n",
+            "output_response": "{\"summary\": \"Found 3 issues in 5 files\", \"recommendations\": [\"Fix critical bugs\", \"Add docstrings\"]}"
+        },
+        "status": "SUCCESS"
+    },
+    {
+        "id": "c7c82aa0-bd53-491f-8fd2-ddc6db8190a1",
+        "timestamp": "2026-01-06T14:27:53.236741",
+        "agent": "Auditor_Agent",
+        "model": "gemini-2.5-flash",
+        "action": "DEBUG",
+        "details": {
+            "input_prompt": "Instantiate langchain_google_genai.GoogleGenAI for model gemini-2.5-flash",
+            "output_response": "Instance created: <class 'test_auditor_agent._install_stubs.<locals>.GoogleGenerativeAI'>"
+        },
+        "status": "SUCCESS"
+    },
+    {
+        "id": "018660e5-233e-489b-b2e0-52b4b3792e92",
+        "timestamp": "2026-01-06T14:27:53.246349",
+        "agent": "Auditor_Agent",
+        "model": "gemini-2.5-flash",
+        "action": "CODE_ANALYSIS",
+        "details": {
+            "input_prompt": "You are an expert Senior Code Auditor Agent.\nYour task is to analyze static analysis results and provide clear, actionable insights about code quality, bugs, and documentation issues.\n\n### ANALYSIS CAPABILITIES\nYou analyze outputs from:\n- Pylint: Code quality and style issues\n- Radon: Cyclomatic complexity metrics\n- Custom checks: Missing docstrings and documentation\n\n### PROCESS (Chain of Thought)\n1. REVIEW: Examine the audit output for patterns and severity\n2. SUMMARIZE: Create a concise summary of findings\n3. RECOMMEND: Provide specific, prioritized recommendations\n4. STRUCTURE: Return clean JSON with summary and recommendations\n\n### OUTPUT FORMAT\nRespond with pure JSON only:\n{\n  \"summary\": \"short human-readable summary\",\n  \"recommendations\": [\"recommendation 1\", \"recommendation 2\", ...]\n}\n\n### GUIDELINES\n- Be specific about file paths and issue types\n- Prioritize critical issues (bugs, security) over style\n- Suggest concrete fixes when possible\n- Keep recommendations actionable and brief\n\n\nANALYSIS DATA:\nAUDIT_OUTPUT:\nMock pylint output\nMock complexity output\n\nISSUES_FOUND: 3\nTOTAL_FILES: 5\n",
+            "output_response": "{\"summary\": \"Found 3 issues in 5 files\", \"recommendations\": [\"Fix critical bugs\", \"Add docstrings\"]}"
+        },
+        "status": "SUCCESS"
+    },
+    {
+        "id": "43974319-dc0c-415f-af8a-dcf3e4563ece",
+        "timestamp": "2026-01-06T14:27:53.274497",
+        "agent": "Auditor_Agent",
+        "model": "gemini-2.5-flash",
+        "action": "DEBUG",
+        "details": {
+            "input_prompt": "Instantiate langchain_google_genai.GoogleGenAI for model gemini-2.5-flash",
+            "output_response": "Instance created: <class 'test_auditor_agent._install_stubs.<locals>.GoogleGenerativeAI'>"
+        },
+        "status": "SUCCESS"
+    },
+    {
+        "id": "a6b94afa-2fc2-461d-b89c-228bf718c5b8",
+        "timestamp": "2026-01-06T14:27:53.296582",
+        "agent": "Auditor_Agent",
+        "model": "gemini-2.5-flash",
+        "action": "CODE_ANALYSIS",
+        "details": {
+            "input_prompt": "You are an expert Senior Code Auditor Agent.\nYour task is to analyze static analysis results and provide clear, actionable insights about code quality, bugs, and documentation issues.\n\n### ANALYSIS CAPABILITIES\nYou analyze outputs from:\n- Pylint: Code quality and style issues\n- Radon: Cyclomatic complexity metrics\n- Custom checks: Missing docstrings and documentation\n\n### PROCESS (Chain of Thought)\n1. REVIEW: Examine the audit output for patterns and severity\n2. SUMMARIZE: Create a concise summary of findings\n3. RECOMMEND: Provide specific, prioritized recommendations\n4. STRUCTURE: Return clean JSON with summary and recommendations\n\n### OUTPUT FORMAT\nRespond with pure JSON only:\n{\n  \"summary\": \"short human-readable summary\",\n  \"recommendations\": [\"recommendation 1\", \"recommendation 2\", ...]\n}\n\n### GUIDELINES\n- Be specific about file paths and issue types\n- Prioritize critical issues (bugs, security) over style\n- Suggest concrete fixes when possible\n- Keep recommendations actionable and brief\n\n\nANALYSIS DATA:\nAUDIT_OUTPUT:\nMock pylint output\nMock complexity output\n\nISSUES_FOUND: 3\nTOTAL_FILES: 5\n",
+            "output_response": ""
+        },
+        "status": "NO_RESPONSE"
+    },
+    {
+        "id": "34394d64-f45f-48fd-87db-892309bed6e8",
+        "timestamp": "2026-01-06T14:27:53.322353",
+        "agent": "Auditor_Agent",
+        "model": "gemini-2.5-flash",
+        "action": "DEBUG",
+        "details": {
+            "input_prompt": "Instantiate langchain_google_genai.GoogleGenAI for model gemini-2.5-flash",
+            "output_response": "Instance created: <class 'test_auditor_agent._install_stubs.<locals>.GoogleGenerativeAI'>"
+        },
+        "status": "SUCCESS"
+    },
+    {
+        "id": "22d64c0d-f0d9-471e-be71-a149032867d5",
+        "timestamp": "2026-01-06T14:27:53.344373",
+        "agent": "Auditor_Agent",
+        "model": "gemini-2.5-flash",
+        "action": "CODE_ANALYSIS",
+        "details": {
+            "input_prompt": "You are an expert Senior Code Auditor Agent.\nYour task is to analyze static analysis results and provide clear, actionable insights about code quality, bugs, and documentation issues.\n\n### ANALYSIS CAPABILITIES\nYou analyze outputs from:\n- Pylint: Code quality and style issues\n- Radon: Cyclomatic complexity metrics\n- Custom checks: Missing docstrings and documentation\n\n### PROCESS (Chain of Thought)\n1. REVIEW: Examine the audit output for patterns and severity\n2. SUMMARIZE: Create a concise summary of findings\n3. RECOMMEND: Provide specific, prioritized recommendations\n4. STRUCTURE: Return clean JSON with summary and recommendations\n\n### OUTPUT FORMAT\nRespond with pure JSON only:\n{\n  \"summary\": \"short human-readable summary\",\n  \"recommendations\": [\"recommendation 1\", \"recommendation 2\", ...]\n}\n\n### GUIDELINES\n- Be specific about file paths and issue types\n- Prioritize critical issues (bugs, security) over style\n- Suggest concrete fixes when possible\n- Keep recommendations actionable and brief\n\n\nANALYSIS DATA:\nAUDIT_OUTPUT:\nMock pylint output\nMock complexity output\n\nISSUES_FOUND: 3\nTOTAL_FILES: 5\n",
+            "output_response": "Invalid JSON response"
+        },
+        "status": "SUCCESS"
+    },
+    {
+        "id": "ac8d7dae-79fc-4fa8-98d1-5c602553c56e",
+        "timestamp": "2026-01-06T14:27:53.372492",
+        "agent": "Auditor_Agent",
+        "model": "gemini-2.5-flash",
+        "action": "DEBUG",
+        "details": {
+            "input_prompt": "Instantiate langchain_google_genai.GoogleGenAI for model gemini-2.5-flash",
+            "output_response": "Instance created: <class 'test_auditor_agent._install_stubs.<locals>.GoogleGenerativeAI'>"
+        },
+        "status": "SUCCESS"
+    },
+    {
+        "id": "f2ac7f4d-058f-40a9-ad18-5b809ed56add",
+        "timestamp": "2026-01-06T14:27:53.396799",
+        "agent": "Auditor_Agent",
+        "model": "gemini-2.5-flash",
+        "action": "DEBUG",
+        "details": {
+            "input_prompt": "Instantiate langchain_google_genai.GoogleGenAI for model gemini-2.5-flash",
+            "output_response": "Instance created: <class 'test_auditor_agent._install_stubs.<locals>.GoogleGenerativeAI'>"
+        },
+        "status": "SUCCESS"
+    },
+    {
+        "id": "14a978a8-111d-496e-af4c-c1b5525a2a1f",
+        "timestamp": "2026-01-06T14:27:53.418196",
+        "agent": "Auditor_Agent",
+        "model": "gemini-2.5-flash",
+        "action": "CODE_ANALYSIS",
+        "details": {
+            "input_prompt": "You are an expert Senior Code Auditor Agent.\nYour task is to analyze static analysis results and provide clear, actionable insights about code quality, bugs, and documentation issues.\n\n### ANALYSIS CAPABILITIES\nYou analyze outputs from:\n- Pylint: Code quality and style issues\n- Radon: Cyclomatic complexity metrics\n- Custom checks: Missing docstrings and documentation\n\n### PROCESS (Chain of Thought)\n1. REVIEW: Examine the audit output for patterns and severity\n2. SUMMARIZE: Create a concise summary of findings\n3. RECOMMEND: Provide specific, prioritized recommendations\n4. STRUCTURE: Return clean JSON with summary and recommendations\n\n### OUTPUT FORMAT\nRespond with pure JSON only:\n{\n  \"summary\": \"short human-readable summary\",\n  \"recommendations\": [\"recommendation 1\", \"recommendation 2\", ...]\n}\n\n### GUIDELINES\n- Be specific about file paths and issue types\n- Prioritize critical issues (bugs, security) over style\n- Suggest concrete fixes when possible\n- Keep recommendations actionable and brief\n\n\nANALYSIS DATA:\nAUDIT_OUTPUT:\nMock pylint output\nMock complexity output\n\nISSUES_FOUND: 3\nTOTAL_FILES: 5\n",
+            "output_response": "{\"summary\": \"Found 3 issues in 5 files\", \"recommendations\": [\"Fix critical bugs\", \"Add docstrings\"]}"
+        },
+        "status": "SUCCESS"
+    },
+    {
+        "id": "5eae5629-9211-46bd-a3e0-a73a4d53a5f8",
+        "timestamp": "2026-01-06T14:37:57.855938",
+        "agent": "Auditor_Agent",
+        "model": "gemini-2.5-flash",
+        "action": "DEBUG",
+        "details": {
+            "input_prompt": "Instantiate langchain_google_genai.GoogleGenAI for model gemini-2.5-flash",
+            "output_response": "Instance created: <class 'test_auditor_agent._install_stubs.<locals>.GoogleGenerativeAI'>"
+        },
+        "status": "SUCCESS"
+    },
+    {
+        "id": "8366b1a1-4dcd-4301-b970-9cc14deb9c63",
+        "timestamp": "2026-01-06T14:37:57.865680",
+        "agent": "Auditor_Agent",
+        "model": "gemini-2.5-flash",
+        "action": "CODE_ANALYSIS",
+        "details": {
+            "input_prompt": "You are an expert Senior Code Auditor Agent.\nYour task is to analyze static analysis results and provide clear, actionable insights about code quality, bugs, and documentation issues.\n\n### ANALYSIS CAPABILITIES\nYou analyze outputs from:\n- Pylint: Code quality and style issues\n- Radon: Cyclomatic complexity metrics\n- Custom checks: Missing docstrings and documentation\n\n### PROCESS (Chain of Thought)\n1. REVIEW: Examine the audit output for patterns and severity\n2. SUMMARIZE: Create a concise summary of findings\n3. RECOMMEND: Provide specific, prioritized recommendations\n4. STRUCTURE: Return clean JSON with summary and recommendations\n\n### OUTPUT FORMAT\nRespond with pure JSON only:\n{\n  \"summary\": \"short human-readable summary\",\n  \"recommendations\": [\"recommendation 1\", \"recommendation 2\", ...]\n}\n\n### GUIDELINES\n- Be specific about file paths and issue types\n- Prioritize critical issues (bugs, security) over style\n- Suggest concrete fixes when possible\n- Keep recommendations actionable and brief\n\n\nANALYSIS DATA:\nAUDIT_OUTPUT:\nMock pylint output\nMock complexity output\n\nISSUES_FOUND: 3\nTOTAL_FILES: 5\n",
+            "output_response": "{\"summary\": \"Found 3 issues in 5 files\", \"recommendations\": [\"Fix critical bugs\", \"Add docstrings\"]}"
+        },
+        "status": "SUCCESS"
+    },
+    {
+        "id": "732738aa-b7a3-4318-92e3-23a6b7744886",
+        "timestamp": "2026-01-06T14:37:57.895502",
+        "agent": "Auditor_Agent",
+        "model": "gemini-2.5-flash",
+        "action": "DEBUG",
+        "details": {
+            "input_prompt": "Instantiate langchain_google_genai.GoogleGenAI for model gemini-2.5-flash",
+            "output_response": "Instance created: <class 'test_auditor_agent._install_stubs.<locals>.GoogleGenerativeAI'>"
+        },
+        "status": "SUCCESS"
+    },
+    {
+        "id": "d70c6a39-7bee-445c-91ca-f46e4db1949a",
+        "timestamp": "2026-01-06T14:37:57.927349",
+        "agent": "Auditor_Agent",
+        "model": "gemini-2.5-flash",
+        "action": "CODE_ANALYSIS",
+        "details": {
+            "input_prompt": "You are an expert Senior Code Auditor Agent.\nYour task is to analyze static analysis results and provide clear, actionable insights about code quality, bugs, and documentation issues.\n\n### ANALYSIS CAPABILITIES\nYou analyze outputs from:\n- Pylint: Code quality and style issues\n- Radon: Cyclomatic complexity metrics\n- Custom checks: Missing docstrings and documentation\n\n### PROCESS (Chain of Thought)\n1. REVIEW: Examine the audit output for patterns and severity\n2. SUMMARIZE: Create a concise summary of findings\n3. RECOMMEND: Provide specific, prioritized recommendations\n4. STRUCTURE: Return clean JSON with summary and recommendations\n\n### OUTPUT FORMAT\nRespond with pure JSON only:\n{\n  \"summary\": \"short human-readable summary\",\n  \"recommendations\": [\"recommendation 1\", \"recommendation 2\", ...]\n}\n\n### GUIDELINES\n- Be specific about file paths and issue types\n- Prioritize critical issues (bugs, security) over style\n- Suggest concrete fixes when possible\n- Keep recommendations actionable and brief\n\n\nANALYSIS DATA:\nAUDIT_OUTPUT:\nMock pylint output\nMock complexity output\n\nISSUES_FOUND: 3\nTOTAL_FILES: 5\n",
+            "output_response": ""
+        },
+        "status": "NO_RESPONSE"
+    },
+    {
+        "id": "ddd64765-4e55-467d-b863-06f77d29b989",
+        "timestamp": "2026-01-06T14:37:57.962273",
+        "agent": "Auditor_Agent",
+        "model": "gemini-2.5-flash",
+        "action": "DEBUG",
+        "details": {
+            "input_prompt": "Instantiate langchain_google_genai.GoogleGenAI for model gemini-2.5-flash",
+            "output_response": "Instance created: <class 'test_auditor_agent._install_stubs.<locals>.GoogleGenerativeAI'>"
+        },
+        "status": "SUCCESS"
+    },
+    {
+        "id": "a864e9c3-fb8b-447e-9bf4-7f41fa63bd67",
+        "timestamp": "2026-01-06T14:37:57.992779",
+        "agent": "Auditor_Agent",
+        "model": "gemini-2.5-flash",
+        "action": "CODE_ANALYSIS",
+        "details": {
+            "input_prompt": "You are an expert Senior Code Auditor Agent.\nYour task is to analyze static analysis results and provide clear, actionable insights about code quality, bugs, and documentation issues.\n\n### ANALYSIS CAPABILITIES\nYou analyze outputs from:\n- Pylint: Code quality and style issues\n- Radon: Cyclomatic complexity metrics\n- Custom checks: Missing docstrings and documentation\n\n### PROCESS (Chain of Thought)\n1. REVIEW: Examine the audit output for patterns and severity\n2. SUMMARIZE: Create a concise summary of findings\n3. RECOMMEND: Provide specific, prioritized recommendations\n4. STRUCTURE: Return clean JSON with summary and recommendations\n\n### OUTPUT FORMAT\nRespond with pure JSON only:\n{\n  \"summary\": \"short human-readable summary\",\n  \"recommendations\": [\"recommendation 1\", \"recommendation 2\", ...]\n}\n\n### GUIDELINES\n- Be specific about file paths and issue types\n- Prioritize critical issues (bugs, security) over style\n- Suggest concrete fixes when possible\n- Keep recommendations actionable and brief\n\n\nANALYSIS DATA:\nAUDIT_OUTPUT:\nMock pylint output\nMock complexity output\n\nISSUES_FOUND: 3\nTOTAL_FILES: 5\n",
+            "output_response": "Invalid JSON response"
+        },
+        "status": "SUCCESS"
+    },
+    {
+        "id": "885b3a7f-3842-44f8-b889-cf28b6785d96",
+        "timestamp": "2026-01-06T14:37:58.019806",
+        "agent": "Auditor_Agent",
+        "model": "gemini-2.5-flash",
+        "action": "DEBUG",
+        "details": {
+            "input_prompt": "Instantiate langchain_google_genai.GoogleGenAI for model gemini-2.5-flash",
+            "output_response": "Instance created: <class 'test_auditor_agent._install_stubs.<locals>.GoogleGenerativeAI'>"
+        },
+        "status": "SUCCESS"
+    },
+    {
+        "id": "d3b6605a-5c66-47ad-af2b-600652765ac6",
+        "timestamp": "2026-01-06T14:37:58.046377",
+        "agent": "Auditor_Agent",
+        "model": "gemini-2.5-flash",
+        "action": "DEBUG",
+        "details": {
+            "input_prompt": "Instantiate langchain_google_genai.GoogleGenAI for model gemini-2.5-flash",
+            "output_response": "Instance created: <class 'test_auditor_agent._install_stubs.<locals>.GoogleGenerativeAI'>"
+        },
+        "status": "SUCCESS"
+    },
+    {
+        "id": "e5bd7192-82f5-46b1-b883-6bf590d31088",
+        "timestamp": "2026-01-06T14:37:58.077480",
+        "agent": "Auditor_Agent",
+        "model": "gemini-2.5-flash",
+        "action": "CODE_ANALYSIS",
+        "details": {
+            "input_prompt": "You are an expert Senior Code Auditor Agent.\nYour task is to analyze static analysis results and provide clear, actionable insights about code quality, bugs, and documentation issues.\n\n### ANALYSIS CAPABILITIES\nYou analyze outputs from:\n- Pylint: Code quality and style issues\n- Radon: Cyclomatic complexity metrics\n- Custom checks: Missing docstrings and documentation\n\n### PROCESS (Chain of Thought)\n1. REVIEW: Examine the audit output for patterns and severity\n2. SUMMARIZE: Create a concise summary of findings\n3. RECOMMEND: Provide specific, prioritized recommendations\n4. STRUCTURE: Return clean JSON with summary and recommendations\n\n### OUTPUT FORMAT\nRespond with pure JSON only:\n{\n  \"summary\": \"short human-readable summary\",\n  \"recommendations\": [\"recommendation 1\", \"recommendation 2\", ...]\n}\n\n### GUIDELINES\n- Be specific about file paths and issue types\n- Prioritize critical issues (bugs, security) over style\n- Suggest concrete fixes when possible\n- Keep recommendations actionable and brief\n\n\nANALYSIS DATA:\nAUDIT_OUTPUT:\nMock pylint output\nMock complexity output\n\nISSUES_FOUND: 3\nTOTAL_FILES: 5\n",
+            "output_response": "{\"summary\": \"Found 3 issues in 5 files\", \"recommendations\": [\"Fix critical bugs\", \"Add docstrings\"]}"
+        },
+        "status": "SUCCESS"
+    },
+    {
+        "id": "0e2aee41-3eb8-4e2c-960f-7076f9df990a",
+        "timestamp": "2026-01-06T14:44:08.538117",
+        "agent": "Auditor_Agent",
+        "model": "gemini-2.5-flash",
+        "action": "DEBUG",
+        "details": {
+            "input_prompt": "Instantiate langchain_google_genai.GoogleGenAI for model gemini-2.5-flash",
+            "output_response": "Instance created: <class 'test_auditor_agent._install_stubs.<locals>.GoogleGenerativeAI'>"
+        },
+        "status": "SUCCESS"
+    },
+    {
+        "id": "78dc5a32-0c5d-4833-be22-77d558213850",
+        "timestamp": "2026-01-06T14:44:08.547964",
+        "agent": "Auditor_Agent",
+        "model": "gemini-2.5-flash",
+        "action": "CODE_ANALYSIS",
+        "details": {
+            "input_prompt": "You are an expert Senior Code Auditor Agent.\nYour task is to analyze static analysis results and provide clear, actionable insights about code quality, bugs, and documentation issues.\n\n### ANALYSIS CAPABILITIES\nYou analyze outputs from:\n- Pylint: Code quality and style issues\n- Radon: Cyclomatic complexity metrics\n- Custom checks: Missing docstrings and documentation\n\n### PROCESS (Chain of Thought)\n1. REVIEW: Examine the audit output for patterns and severity\n2. SUMMARIZE: Create a concise summary of findings\n3. RECOMMEND: Provide specific, prioritized recommendations\n4. STRUCTURE: Return clean JSON with summary and recommendations\n\n### OUTPUT FORMAT\nRespond with pure JSON only:\n{\n  \"summary\": \"short human-readable summary\",\n  \"recommendations\": [\"recommendation 1\", \"recommendation 2\", ...]\n}\n\n### GUIDELINES\n- Be specific about file paths and issue types\n- Prioritize critical issues (bugs, security) over style\n- Suggest concrete fixes when possible\n- Keep recommendations actionable and brief\n\n\nANALYSIS DATA:\nAUDIT_OUTPUT:\nMock pylint output\nMock complexity output\n\nISSUES_FOUND: 3\nTOTAL_FILES: 5\n",
+            "output_response": "{\"summary\": \"Found 3 issues in 5 files\", \"recommendations\": [\"Fix critical bugs\", \"Add docstrings\"]}"
+        },
+        "status": "SUCCESS"
+    },
+    {
+        "id": "51080b4b-1301-4f05-8e75-0561f105adf7",
+        "timestamp": "2026-01-06T14:44:08.575353",
+        "agent": "Auditor_Agent",
+        "model": "gemini-2.5-flash",
+        "action": "DEBUG",
+        "details": {
+            "input_prompt": "Instantiate langchain_google_genai.GoogleGenAI for model gemini-2.5-flash",
+            "output_response": "Instance created: <class 'test_auditor_agent._install_stubs.<locals>.GoogleGenerativeAI'>"
+        },
+        "status": "SUCCESS"
+    },
+    {
+        "id": "468a1b19-0d10-4564-8f5a-420097b10e8a",
+        "timestamp": "2026-01-06T14:44:08.596892",
+        "agent": "Auditor_Agent",
+        "model": "gemini-2.5-flash",
+        "action": "CODE_ANALYSIS",
+        "details": {
+            "input_prompt": "You are an expert Senior Code Auditor Agent.\nYour task is to analyze static analysis results and provide clear, actionable insights about code quality, bugs, and documentation issues.\n\n### ANALYSIS CAPABILITIES\nYou analyze outputs from:\n- Pylint: Code quality and style issues\n- Radon: Cyclomatic complexity metrics\n- Custom checks: Missing docstrings and documentation\n\n### PROCESS (Chain of Thought)\n1. REVIEW: Examine the audit output for patterns and severity\n2. SUMMARIZE: Create a concise summary of findings\n3. RECOMMEND: Provide specific, prioritized recommendations\n4. STRUCTURE: Return clean JSON with summary and recommendations\n\n### OUTPUT FORMAT\nRespond with pure JSON only:\n{\n  \"summary\": \"short human-readable summary\",\n  \"recommendations\": [\"recommendation 1\", \"recommendation 2\", ...]\n}\n\n### GUIDELINES\n- Be specific about file paths and issue types\n- Prioritize critical issues (bugs, security) over style\n- Suggest concrete fixes when possible\n- Keep recommendations actionable and brief\n\n\nANALYSIS DATA:\nAUDIT_OUTPUT:\nMock pylint output\nMock complexity output\n\nISSUES_FOUND: 3\nTOTAL_FILES: 5\n",
+            "output_response": ""
+        },
+        "status": "NO_RESPONSE"
+    },
+    {
+        "id": "295d1786-dda6-477d-a2fa-e956431ca02c",
+        "timestamp": "2026-01-06T14:44:08.623401",
+        "agent": "Auditor_Agent",
+        "model": "gemini-2.5-flash",
+        "action": "DEBUG",
+        "details": {
+            "input_prompt": "Instantiate langchain_google_genai.GoogleGenAI for model gemini-2.5-flash",
+            "output_response": "Instance created: <class 'test_auditor_agent._install_stubs.<locals>.GoogleGenerativeAI'>"
+        },
+        "status": "SUCCESS"
+    },
+    {
+        "id": "f5bd8db5-4e89-4c1f-8917-e37573c76afe",
+        "timestamp": "2026-01-06T14:44:08.646169",
+        "agent": "Auditor_Agent",
+        "model": "gemini-2.5-flash",
+        "action": "CODE_ANALYSIS",
+        "details": {
+            "input_prompt": "You are an expert Senior Code Auditor Agent.\nYour task is to analyze static analysis results and provide clear, actionable insights about code quality, bugs, and documentation issues.\n\n### ANALYSIS CAPABILITIES\nYou analyze outputs from:\n- Pylint: Code quality and style issues\n- Radon: Cyclomatic complexity metrics\n- Custom checks: Missing docstrings and documentation\n\n### PROCESS (Chain of Thought)\n1. REVIEW: Examine the audit output for patterns and severity\n2. SUMMARIZE: Create a concise summary of findings\n3. RECOMMEND: Provide specific, prioritized recommendations\n4. STRUCTURE: Return clean JSON with summary and recommendations\n\n### OUTPUT FORMAT\nRespond with pure JSON only:\n{\n  \"summary\": \"short human-readable summary\",\n  \"recommendations\": [\"recommendation 1\", \"recommendation 2\", ...]\n}\n\n### GUIDELINES\n- Be specific about file paths and issue types\n- Prioritize critical issues (bugs, security) over style\n- Suggest concrete fixes when possible\n- Keep recommendations actionable and brief\n\n\nANALYSIS DATA:\nAUDIT_OUTPUT:\nMock pylint output\nMock complexity output\n\nISSUES_FOUND: 3\nTOTAL_FILES: 5\n",
+            "output_response": "Invalid JSON response"
+        },
+        "status": "SUCCESS"
+    },
+    {
+        "id": "bc2896f3-4916-4e8e-bdaf-4033b579b395",
+        "timestamp": "2026-01-06T14:44:08.678235",
+        "agent": "Auditor_Agent",
+        "model": "gemini-2.5-flash",
+        "action": "DEBUG",
+        "details": {
+            "input_prompt": "Instantiate langchain_google_genai.GoogleGenAI for model gemini-2.5-flash",
+            "output_response": "Instance created: <class 'test_auditor_agent._install_stubs.<locals>.GoogleGenerativeAI'>"
+        },
+        "status": "SUCCESS"
+    },
+    {
+        "id": "5a674ac1-f47b-4861-bd12-11bdad1bd95a",
+        "timestamp": "2026-01-06T14:44:08.704021",
+        "agent": "Auditor_Agent",
+        "model": "gemini-2.5-flash",
+        "action": "DEBUG",
+        "details": {
+            "input_prompt": "Instantiate langchain_google_genai.GoogleGenAI for model gemini-2.5-flash",
+            "output_response": "Instance created: <class 'test_auditor_agent._install_stubs.<locals>.GoogleGenerativeAI'>"
+        },
+        "status": "SUCCESS"
+    },
+    {
+        "id": "9bd9503d-cedd-4816-9168-bdeb605d4e24",
+        "timestamp": "2026-01-06T14:44:08.726003",
+        "agent": "Auditor_Agent",
+        "model": "gemini-2.5-flash",
+        "action": "CODE_ANALYSIS",
+        "details": {
+            "input_prompt": "You are an expert Senior Code Auditor Agent.\nYour task is to analyze static analysis results and provide clear, actionable insights about code quality, bugs, and documentation issues.\n\n### ANALYSIS CAPABILITIES\nYou analyze outputs from:\n- Pylint: Code quality and style issues\n- Radon: Cyclomatic complexity metrics\n- Custom checks: Missing docstrings and documentation\n\n### PROCESS (Chain of Thought)\n1. REVIEW: Examine the audit output for patterns and severity\n2. SUMMARIZE: Create a concise summary of findings\n3. RECOMMEND: Provide specific, prioritized recommendations\n4. STRUCTURE: Return clean JSON with summary and recommendations\n\n### OUTPUT FORMAT\nRespond with pure JSON only:\n{\n  \"summary\": \"short human-readable summary\",\n  \"recommendations\": [\"recommendation 1\", \"recommendation 2\", ...]\n}\n\n### GUIDELINES\n- Be specific about file paths and issue types\n- Prioritize critical issues (bugs, security) over style\n- Suggest concrete fixes when possible\n- Keep recommendations actionable and brief\n\n\nANALYSIS DATA:\nAUDIT_OUTPUT:\nMock pylint output\nMock complexity output\n\nISSUES_FOUND: 3\nTOTAL_FILES: 5\n",
+            "output_response": "{\"summary\": \"Found 3 issues in 5 files\", \"recommendations\": [\"Fix critical bugs\", \"Add docstrings\"]}"
+        },
+        "status": "SUCCESS"
+    },
+    {
+        "id": "dc5eb04d-703d-485e-a470-dd7641f46b32",
+        "timestamp": "2026-01-06T14:45:05.068589",
+        "agent": "Auditor_Agent",
+        "model": "gemini-2.5-flash",
+        "action": "DEBUG",
+        "details": {
+            "input_prompt": "Instantiate langchain_google_genai.GoogleGenAI for model gemini-2.5-flash",
+            "output_response": "Instance created: <class 'test_auditor_agent._install_stubs.<locals>.GoogleGenerativeAI'>"
+        },
+        "status": "SUCCESS"
+    },
+    {
+        "id": "1820dded-bb54-4016-a8ea-cfa3dbb165c0",
+        "timestamp": "2026-01-06T14:45:05.079664",
+        "agent": "Auditor_Agent",
+        "model": "gemini-2.5-flash",
+        "action": "CODE_ANALYSIS",
+        "details": {
+            "input_prompt": "You are an expert Senior Code Auditor Agent.\nYour task is to analyze static analysis results and provide clear, actionable insights about code quality, bugs, and documentation issues.\n\n### ANALYSIS CAPABILITIES\nYou analyze outputs from:\n- Pylint: Code quality and style issues\n- Radon: Cyclomatic complexity metrics\n- Custom checks: Missing docstrings and documentation\n\n### PROCESS (Chain of Thought)\n1. REVIEW: Examine the audit output for patterns and severity\n2. SUMMARIZE: Create a concise summary of findings\n3. RECOMMEND: Provide specific, prioritized recommendations\n4. STRUCTURE: Return clean JSON with summary and recommendations\n\n### OUTPUT FORMAT\nRespond with pure JSON only:\n{\n  \"summary\": \"short human-readable summary\",\n  \"recommendations\": [\"recommendation 1\", \"recommendation 2\", ...]\n}\n\n### GUIDELINES\n- Be specific about file paths and issue types\n- Prioritize critical issues (bugs, security) over style\n- Suggest concrete fixes when possible\n- Keep recommendations actionable and brief\n\n\nANALYSIS DATA:\nAUDIT_OUTPUT:\nMock pylint output\nMock complexity output\n\nISSUES_FOUND: 3\nTOTAL_FILES: 5\n",
+            "output_response": "{\"summary\": \"Found 3 issues in 5 files\", \"recommendations\": [\"Fix critical bugs\", \"Add docstrings\"]}"
+        },
+        "status": "SUCCESS"
+    },
+    {
+        "id": "58cd13b4-99cf-4896-b3e6-0f760b6311fd",
+        "timestamp": "2026-01-06T14:45:05.110482",
+        "agent": "Auditor_Agent",
+        "model": "gemini-2.5-flash",
+        "action": "DEBUG",
+        "details": {
+            "input_prompt": "Instantiate langchain_google_genai.GoogleGenAI for model gemini-2.5-flash",
+            "output_response": "Instance created: <class 'test_auditor_agent._install_stubs.<locals>.GoogleGenerativeAI'>"
+        },
+        "status": "SUCCESS"
+    },
+    {
+        "id": "8d445c03-9660-4715-a7ba-384a404b1af8",
+        "timestamp": "2026-01-06T14:45:05.133214",
+        "agent": "Auditor_Agent",
+        "model": "gemini-2.5-flash",
+        "action": "CODE_ANALYSIS",
+        "details": {
+            "input_prompt": "You are an expert Senior Code Auditor Agent.\nYour task is to analyze static analysis results and provide clear, actionable insights about code quality, bugs, and documentation issues.\n\n### ANALYSIS CAPABILITIES\nYou analyze outputs from:\n- Pylint: Code quality and style issues\n- Radon: Cyclomatic complexity metrics\n- Custom checks: Missing docstrings and documentation\n\n### PROCESS (Chain of Thought)\n1. REVIEW: Examine the audit output for patterns and severity\n2. SUMMARIZE: Create a concise summary of findings\n3. RECOMMEND: Provide specific, prioritized recommendations\n4. STRUCTURE: Return clean JSON with summary and recommendations\n\n### OUTPUT FORMAT\nRespond with pure JSON only:\n{\n  \"summary\": \"short human-readable summary\",\n  \"recommendations\": [\"recommendation 1\", \"recommendation 2\", ...]\n}\n\n### GUIDELINES\n- Be specific about file paths and issue types\n- Prioritize critical issues (bugs, security) over style\n- Suggest concrete fixes when possible\n- Keep recommendations actionable and brief\n\n\nANALYSIS DATA:\nAUDIT_OUTPUT:\nMock pylint output\nMock complexity output\n\nISSUES_FOUND: 3\nTOTAL_FILES: 5\n",
+            "output_response": ""
+        },
+        "status": "NO_RESPONSE"
+    },
+    {
+        "id": "4dda23fd-08b7-41ec-8156-70c2882d234c",
+        "timestamp": "2026-01-06T14:45:05.158793",
+        "agent": "Auditor_Agent",
+        "model": "gemini-2.5-flash",
+        "action": "DEBUG",
+        "details": {
+            "input_prompt": "Instantiate langchain_google_genai.GoogleGenAI for model gemini-2.5-flash",
+            "output_response": "Instance created: <class 'test_auditor_agent._install_stubs.<locals>.GoogleGenerativeAI'>"
+        },
+        "status": "SUCCESS"
+    },
+    {
+        "id": "043194f6-fc9b-41d6-8d00-ef5a32f14d3b",
+        "timestamp": "2026-01-06T14:45:05.181627",
+        "agent": "Auditor_Agent",
+        "model": "gemini-2.5-flash",
+        "action": "CODE_ANALYSIS",
+        "details": {
+            "input_prompt": "You are an expert Senior Code Auditor Agent.\nYour task is to analyze static analysis results and provide clear, actionable insights about code quality, bugs, and documentation issues.\n\n### ANALYSIS CAPABILITIES\nYou analyze outputs from:\n- Pylint: Code quality and style issues\n- Radon: Cyclomatic complexity metrics\n- Custom checks: Missing docstrings and documentation\n\n### PROCESS (Chain of Thought)\n1. REVIEW: Examine the audit output for patterns and severity\n2. SUMMARIZE: Create a concise summary of findings\n3. RECOMMEND: Provide specific, prioritized recommendations\n4. STRUCTURE: Return clean JSON with summary and recommendations\n\n### OUTPUT FORMAT\nRespond with pure JSON only:\n{\n  \"summary\": \"short human-readable summary\",\n  \"recommendations\": [\"recommendation 1\", \"recommendation 2\", ...]\n}\n\n### GUIDELINES\n- Be specific about file paths and issue types\n- Prioritize critical issues (bugs, security) over style\n- Suggest concrete fixes when possible\n- Keep recommendations actionable and brief\n\n\nANALYSIS DATA:\nAUDIT_OUTPUT:\nMock pylint output\nMock complexity output\n\nISSUES_FOUND: 3\nTOTAL_FILES: 5\n",
+            "output_response": "Invalid JSON response"
+        },
+        "status": "SUCCESS"
+    },
+    {
+        "id": "41822ecd-fcb3-4a32-82b0-84e240799e94",
+        "timestamp": "2026-01-06T14:45:05.206589",
+        "agent": "Auditor_Agent",
+        "model": "gemini-2.5-flash",
+        "action": "DEBUG",
+        "details": {
+            "input_prompt": "Instantiate langchain_google_genai.GoogleGenAI for model gemini-2.5-flash",
+            "output_response": "Instance created: <class 'test_auditor_agent._install_stubs.<locals>.GoogleGenerativeAI'>"
+        },
+        "status": "SUCCESS"
+    },
+    {
+        "id": "7821f492-bf7a-413e-a57b-f66337a61311",
+        "timestamp": "2026-01-06T14:45:05.231158",
+        "agent": "Auditor_Agent",
+        "model": "gemini-2.5-flash",
+        "action": "DEBUG",
+        "details": {
+            "input_prompt": "Instantiate langchain_google_genai.GoogleGenAI for model gemini-2.5-flash",
+            "output_response": "Instance created: <class 'test_auditor_agent._install_stubs.<locals>.GoogleGenerativeAI'>"
+        },
+        "status": "SUCCESS"
+    },
+    {
+        "id": "d46ca74c-30f1-4ce6-891d-c272ab9d25d8",
+        "timestamp": "2026-01-06T14:45:05.254032",
+        "agent": "Auditor_Agent",
+        "model": "gemini-2.5-flash",
+        "action": "CODE_ANALYSIS",
+        "details": {
+            "input_prompt": "You are an expert Senior Code Auditor Agent.\nYour task is to analyze static analysis results and provide clear, actionable insights about code quality, bugs, and documentation issues.\n\n### ANALYSIS CAPABILITIES\nYou analyze outputs from:\n- Pylint: Code quality and style issues\n- Radon: Cyclomatic complexity metrics\n- Custom checks: Missing docstrings and documentation\n\n### PROCESS (Chain of Thought)\n1. REVIEW: Examine the audit output for patterns and severity\n2. SUMMARIZE: Create a concise summary of findings\n3. RECOMMEND: Provide specific, prioritized recommendations\n4. STRUCTURE: Return clean JSON with summary and recommendations\n\n### OUTPUT FORMAT\nRespond with pure JSON only:\n{\n  \"summary\": \"short human-readable summary\",\n  \"recommendations\": [\"recommendation 1\", \"recommendation 2\", ...]\n}\n\n### GUIDELINES\n- Be specific about file paths and issue types\n- Prioritize critical issues (bugs, security) over style\n- Suggest concrete fixes when possible\n- Keep recommendations actionable and brief\n\n\nANALYSIS DATA:\nAUDIT_OUTPUT:\nMock pylint output\nMock complexity output\n\nISSUES_FOUND: 3\nTOTAL_FILES: 5\n",
+            "output_response": "{\"summary\": \"Found 3 issues in 5 files\", \"recommendations\": [\"Fix critical bugs\", \"Add docstrings\"]}"
+        },
+        "status": "SUCCESS"
+    },
+    {
+        "id": "29648e08-4c23-4fe7-846e-76092d631509",
+        "timestamp": "2026-01-06T15:07:30.379268",
+        "agent": "BaseAgent",
+        "model": "gemini-2.5-flash",
+        "action": "DEBUG",
+        "details": {
+            "input_prompt": "Instantiate langchain_google_genai.GoogleGenAI for model gemini-2.5-flash",
+            "output_response": "Instance created: <class 'test_auditor_agent._install_stubs.<locals>.GoogleGenerativeAI'>"
+        },
+        "status": "SUCCESS"
+    },
+    {
+        "id": "cc1d66e9-3e9e-4940-af98-8edeb3a8a48a",
+        "timestamp": "2026-01-06T15:07:30.780615",
+        "agent": "BaseAgent",
+        "model": "gemini-2.5-flash",
+        "action": "DEBUG",
+        "details": {
+            "input_prompt": "Instantiate langchain_google_genai.GoogleGenAI for model gemini-2.5-flash",
+            "output_response": "Instance created: <class 'test_auditor_agent._install_stubs.<locals>.GoogleGenerativeAI'>"
+        },
+        "status": "SUCCESS"
+    },
+    {
+        "id": "136e082f-1d49-4c0b-acfd-f4d1ff343629",
+        "timestamp": "2026-01-06T15:07:30.847799",
+        "agent": "BaseAgent",
+        "model": "gemini-2.5-flash",
+        "action": "DEBUG",
+        "details": {
+            "input_prompt": "Instantiate langchain_google_genai.GoogleGenAI for model gemini-2.5-flash",
+            "output_response": "Instance created: <class 'test_auditor_agent._install_stubs.<locals>.GoogleGenerativeAI'>"
+        },
+        "status": "SUCCESS"
+    },
+    {
+        "id": "5a113371-b0b8-44a3-b776-d8f34ad86a10",
+        "timestamp": "2026-01-06T15:07:30.913242",
+        "agent": "BaseAgent",
+        "model": "gemini-2.5-flash",
+        "action": "DEBUG",
+        "details": {
+            "input_prompt": "Instantiate langchain_google_genai.GoogleGenAI for model gemini-2.5-flash",
+            "output_response": "Instance created: <class 'test_auditor_agent._install_stubs.<locals>.GoogleGenerativeAI'>"
+        },
+        "status": "SUCCESS"
+    },
+    {
+        "id": "0434420d-f5ef-4964-9999-6ed695bcf184",
+        "timestamp": "2026-01-06T15:07:30.982334",
+        "agent": "BaseAgent",
+        "model": "gemini-2.5-flash",
+        "action": "DEBUG",
+        "details": {
+            "input_prompt": "Instantiate langchain_google_genai.GoogleGenAI for model gemini-2.5-flash",
+            "output_response": "Instance created: <class 'test_auditor_agent._install_stubs.<locals>.GoogleGenerativeAI'>"
+        },
+        "status": "SUCCESS"
+    },
+    {
+        "id": "a04c1f59-8afb-459d-91e3-b6d3902738f0",
+        "timestamp": "2026-01-06T15:08:20.058692",
+        "agent": "BaseAgent",
+        "model": "gemini-2.5-flash",
+        "action": "DEBUG",
+        "details": {
+            "input_prompt": "Instantiate langchain_google_genai.GoogleGenAI for model gemini-2.5-flash",
+            "output_response": "Instance created: <class 'test_auditor_agent._install_stubs.<locals>.GoogleGenerativeAI'>"
+        },
+        "status": "SUCCESS"
+    },
+    {
+        "id": "0b408476-1ce5-4d74-bd59-71e5052d079e",
+        "timestamp": "2026-01-06T15:08:20.387976",
+        "agent": "BaseAgent",
+        "model": "gemini-2.5-flash",
+        "action": "DEBUG",
+        "details": {
+            "input_prompt": "Instantiate langchain_google_genai.GoogleGenAI for model gemini-2.5-flash",
+            "output_response": "Instance created: <class 'test_auditor_agent._install_stubs.<locals>.GoogleGenerativeAI'>"
+        },
+        "status": "SUCCESS"
+    },
+    {
+        "id": "915c39d0-b1cd-4f2f-a392-f9b55726f0b3",
+        "timestamp": "2026-01-06T15:08:20.461218",
+        "agent": "BaseAgent",
+        "model": "gemini-2.5-flash",
+        "action": "DEBUG",
+        "details": {
+            "input_prompt": "Instantiate langchain_google_genai.GoogleGenAI for model gemini-2.5-flash",
+            "output_response": "Instance created: <class 'test_auditor_agent._install_stubs.<locals>.GoogleGenerativeAI'>"
+        },
+        "status": "SUCCESS"
+    },
+    {
+        "id": "e89dd82d-d3ff-4c0e-8d09-21869996eaf4",
+        "timestamp": "2026-01-06T15:08:20.627795",
+        "agent": "BaseAgent",
+        "model": "gemini-2.5-flash",
+        "action": "DEBUG",
+        "details": {
+            "input_prompt": "Instantiate langchain_google_genai.GoogleGenAI for model gemini-2.5-flash",
+            "output_response": "Instance created: <class 'test_auditor_agent._install_stubs.<locals>.GoogleGenerativeAI'>"
+        },
+        "status": "SUCCESS"
+    },
+    {
+        "id": "bd870777-d03c-47e7-bea7-e0d8e2013ab9",
+        "timestamp": "2026-01-06T15:08:20.696469",
+        "agent": "BaseAgent",
+        "model": "gemini-2.5-flash",
+        "action": "DEBUG",
+        "details": {
+            "input_prompt": "Instantiate langchain_google_genai.GoogleGenAI for model gemini-2.5-flash",
+            "output_response": "Instance created: <class 'test_auditor_agent._install_stubs.<locals>.GoogleGenerativeAI'>"
+        },
+        "status": "SUCCESS"
+    },
+    {
+        "id": "7e3071ab-60ef-43f3-ae51-43d065b64986",
+        "timestamp": "2026-01-06T15:08:20.769514",
+        "agent": "BaseAgent",
+        "model": "gemini-2.5-flash",
+        "action": "DEBUG",
+        "details": {
+            "input_prompt": "Instantiate langchain_google_genai.GoogleGenAI for model gemini-2.5-flash",
+            "output_response": "Instance created: <class 'test_auditor_agent._install_stubs.<locals>.GoogleGenerativeAI'>"
+        },
+        "status": "SUCCESS"
+    },
+    {
+        "id": "4ca84048-cfb3-4d97-a589-b2be351bc0b7",
+        "timestamp": "2026-01-06T15:08:20.898860",
+        "agent": "BaseAgent",
+        "model": "gemini-2.5-flash",
+        "action": "DEBUG",
+        "details": {
+            "input_prompt": "Instantiate langchain_google_genai.GoogleGenAI for model gemini-2.5-flash",
+            "output_response": "Instance created: <class 'test_auditor_agent._install_stubs.<locals>.GoogleGenerativeAI'>"
+        },
+        "status": "SUCCESS"
+    },
+    {
+        "id": "1d835991-a729-48aa-b22c-677efe460447",
+        "timestamp": "2026-01-06T15:32:17.335331",
+        "agent": "BaseAgent",
+        "model": "gemini-2.5-flash",
+        "action": "DEBUG",
+        "details": {
+            "input_prompt": "Instantiate langchain_google_genai.GoogleGenAI for model gemini-2.5-flash",
+            "output_response": "Instance created: <class 'langchain_google_genai.llms.GoogleGenerativeAI'>"
+        },
+        "status": "SUCCESS"
+    },
+    {
+        "id": "a2e9852a-79ed-4d80-aa9b-c44057a6d67d",
+        "timestamp": "2026-01-06T15:34:01.531880",
+        "agent": "BaseAgent",
+        "model": "gemini-2.5-flash",
+        "action": "DEBUG",
+        "details": {
+            "input_prompt": "Instantiate langchain_google_genai.GoogleGenAI for model gemini-2.5-flash",
+            "output_response": "Instance created: <class 'langchain_google_genai.llms.GoogleGenerativeAI'>"
+        },
+        "status": "SUCCESS"
+    },
+    {
+        "id": "be3c3fbf-5549-4888-a3be-a817e3d64729",
+        "timestamp": "2026-01-06T15:48:42.077063",
+        "agent": "BaseAgent",
+        "model": "gemini-2.5-flash",
+        "action": "DEBUG",
+        "details": {
+            "input_prompt": "Instantiate langchain_google_genai.GoogleGenAI for model gemini-2.5-flash",
+            "output_response": "Instance created: <class 'langchain_google_genai.llms.GoogleGenerativeAI'>"
+        },
+        "status": "SUCCESS"
+    },
+    {
+        "id": "f1d184cc-c383-494b-a00b-3a43214a1be6",
+        "timestamp": "2026-01-06T15:50:48.524586",
+        "agent": "BaseAgent",
+        "model": "gemini-2.5-flash",
+        "action": "DEBUG",
+        "details": {
+            "input_prompt": "Instantiate langchain_google_genai.GoogleGenAI for model gemini-2.5-flash",
+            "output_response": "Instance created: <class 'langchain_google_genai.llms.GoogleGenerativeAI'>"
+        },
+        "status": "SUCCESS"
+    },
+    {
+        "id": "0d741188-92bf-4efa-8c0e-7ad79d72d4d9",
+        "timestamp": "2026-01-06T17:19:18.902602",
+        "agent": "BaseAgent",
+        "model": "gemini-2.5-flash",
+        "action": "DEBUG",
+        "details": {
+            "input_prompt": "Instantiate langchain_google_genai.GoogleGenAI for model gemini-2.5-flash",
+            "output_response": "Instance created: <class 'langchain_google_genai.llms.GoogleGenerativeAI'>"
+        },
+        "status": "SUCCESS"
+    },
+    {
+        "id": "a186f163-5ab2-4cca-adcf-cdc21bacecd2",
+        "timestamp": "2026-01-06T17:23:22.541469",
+        "agent": "BaseAgent",
+        "model": "gemini-2.5-flash",
+        "action": "DEBUG",
+        "details": {
+            "input_prompt": "Instantiate langchain_google_genai.GoogleGenAI for model gemini-2.5-flash",
+            "output_response": "Instance created: <class 'langchain_google_genai.llms.GoogleGenerativeAI'>"
+        },
+        "status": "SUCCESS"
+    },
+    {
+        "id": "93944d88-58cf-459e-a423-75e538e51847",
+        "timestamp": "2026-01-06T17:56:09.934838",
+        "agent": "BaseAgent",
+        "model": "gemini-3.0-flash",
+        "action": "DEBUG",
+        "details": {
+            "input_prompt": "Instantiate langchain_google_genai.GoogleGenAI for model gemini-3.0-flash",
+            "output_response": "Instance created: <class 'langchain_google_genai.llms.GoogleGenerativeAI'>"
+        },
+        "status": "SUCCESS"
+    },
+    {
+        "id": "c8469643-e9bb-4a07-8388-0d9d76c4ceff",
+        "timestamp": "2026-01-06T17:57:12.806103",
+        "agent": "BaseAgent",
+        "model": "gemini-3-flash",
+        "action": "DEBUG",
+        "details": {
+            "input_prompt": "Instantiate langchain_google_genai.GoogleGenAI for model gemini-3-flash",
+            "output_response": "Instance created: <class 'langchain_google_genai.llms.GoogleGenerativeAI'>"
+        },
+        "status": "SUCCESS"
+    },
+    {
+        "id": "41a3e0d5-f3d1-4d98-abf8-4911963708ee",
+        "timestamp": "2026-01-06T17:59:03.043653",
+        "agent": "BaseAgent",
+        "model": "gemini-2.5-flash-lite",
+        "action": "DEBUG",
+        "details": {
+            "input_prompt": "Instantiate langchain_google_genai.GoogleGenAI for model gemini-2.5-flash-lite",
+            "output_response": "Instance created: <class 'langchain_google_genai.llms.GoogleGenerativeAI'>"
+        },
+        "status": "SUCCESS"
+    },
+    {
+        "id": "8ab9ed54-f8b0-431a-a2c0-79b1627fb8f1",
+        "timestamp": "2026-01-06T18:01:39.670779",
+        "agent": "BaseAgent",
+        "model": "gemini-2.5-flash-lite",
+        "action": "DEBUG",
+        "details": {
+            "input_prompt": "Instantiate langchain_google_genai.GoogleGenAI for model gemini-2.5-flash-lite",
+            "output_response": "Instance created: <class 'langchain_google_genai.llms.GoogleGenerativeAI'>"
+        },
+        "status": "SUCCESS"
+    },
+    {
+        "id": "315813eb-14b2-49cf-bfa0-32d2a26ae58f",
+        "timestamp": "2026-01-06T18:02:01.484792",
+        "agent": "Auditor_Agent",
+        "model": "gemini-2.5-flash-lite",
+        "action": "CODE_ANALYSIS",
+        "details": {
+            "input_prompt": "Audit the project in the sandbox directory.\nThe sandbox root is: C:\\Users\\7320\\Desktop\\Refactoring-Swarm-Equipe-06\\test_project\nAll file paths should be relative to the sandbox root (use '.' for current directory, or file names like 'bad_code.py').\nPlease analyze the code, create a summary and a TODO list of fixes.\nSave the report to a file named 'audit_report.md' in the sandbox root directory.",
+            "output_response": "# Audit Report\n\nThis report summarizes the findings from the code audit of the `test_project` directory.\n\n## Pylint Analysis\n\nPylint identified the following issues in `bad_code.py`:\n\n*   **Missing module docstring**: The file `bad_code.py` is missing a module-level docstring.\n*   **Missing function docstring**: The function `complex_function` is missing a docstring.\n*   **Missing function docstring**: The function `another_function` is missing a docstring.\n*   **Unnecessary 'else' after 'return'**: In `complex_function`, there is an unnecessary `else` statement after a `return`.\n*   **Unused import**: The `os` module is imported but not used.\n*   **Unused import**: The `sys` module is imported but not used.\n\n## Complexity Analysis (Radon)\n\nAn error occurred during complexity analysis. The tool reported: `[WinError 2] The system cannot find the file specified`. This suggests a potential issue with the installation or configuration of the Radon tool in the environment. Further investigation into the environment setup might be required.\n\n## Docstring Analysis\n\nAn error occurred during docstring analysis. The tool reported that 0 files were analyzed. This, combined with the complexity analysis failure, further indicates a potential environment issue affecting the analysis tools.\n\n## TODO List\n\nBased on the Pylint analysis, the following tasks are recommended:\n\n*   [ ] Add a module docstring to `bad_code.py`.\n*   [ ] Add a docstring to the `complex_function` in `bad_code.py`.\n*   [ ] Add a docstring to the `another_function` in `bad_code.py`.\n*   [ ] Refactor `complex_function` to remove the unnecessary `else` statement after the `return`.\n*   [ ] Remove the unused import of the `os` module from `bad_code.py`.\n*   [ ] Remove the unused import of the `sys` module from `bad_code.py`.\n*   [ ] Investigate and resolve environment issues preventing complexity and docstring analysis tools from running correctly.\n\n**Note:** The complexity and docstring analysis tools failed to execute, likely due to environment configuration issues. The report is based on the available Pylint results."
+        },
+        "status": "SUCCESS"
+    },
+    {
+        "id": "96c8ccf2-7a21-489c-9215-3793cf2576e7",
+        "timestamp": "2026-01-06T18:05:39.347932",
+        "agent": "BaseAgent",
+        "model": "gemini-2.5-flash-lite",
+        "action": "DEBUG",
+        "details": {
+            "input_prompt": "Instantiate langchain_google_genai.GoogleGenAI for model gemini-2.5-flash-lite",
+            "output_response": "Instance created: <class 'langchain_google_genai.llms.GoogleGenerativeAI'>"
+        },
+        "status": "SUCCESS"
+    },
+    {
+        "id": "38b3c351-0b00-449d-b6b6-574bdfa4770f",
+        "timestamp": "2026-01-06T18:05:49.668199",
+        "agent": "Auditor_Agent",
+        "model": "gemini-2.5-flash-lite",
+        "action": "CODE_ANALYSIS",
+        "details": {
+            "input_prompt": "Audit the project in the sandbox directory.\nThe sandbox root is: C:\\Users\\7320\\Desktop\\Refactoring-Swarm-Equipe-06\\test_project\nAll file paths should be relative to the sandbox root (use '.' for current directory, or file names like 'bad_code.py').\nPlease analyze the code, create a summary and a TODO list of fixes.\nSave the report to a file named 'audit_report.md' in the sandbox root directory.",
+            "output_response": "The audit of the project is complete. An 'audit_report.md' file has been created in the sandbox root directory containing a summary of the issues found and a TODO list of fixes. The report indicates missing docstrings, an unnecessary else statement, and unused imports in `bad_code.py`. Complexity analysis could not be performed due to an error."
+        },
+        "status": "SUCCESS"
     }
 ]

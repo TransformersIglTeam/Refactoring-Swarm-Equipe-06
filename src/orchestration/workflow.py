@@ -7,18 +7,16 @@ from src.orchestration.state import AgentState
 # Import Agents
 # We use try/except block or direct imports if we are sure.
 # For now, we assume these files exist and have the classes as defined in previous steps.
-from src.agents.analyser.AnalyserAgent import AnalyserAgent
 from src.agents.fixer.FixerAgent import FixerAgent
 from src.agents.judge.JudgeAgent import JudgeAgent
 from src.agents.auditor.AuditorAgent import AuditorAgent
 
 logger = logging.getLogger(__name__)
 
-# Initialize Agents
 try:
-    analyser_agent = AnalyserAgent()
+    auditor_agent = AuditorAgent()
 except:
-    analyser_agent = None
+    auditor_agent = None
 
 try:
     fixer_agent = FixerAgent()
@@ -30,23 +28,22 @@ try:
 except:
     judge_agent = None
 
-try:
-    auditor_agent = AuditorAgent()
-except:
-    auditor_agent = None
+def node_auditor(state: AgentState):
+    logger.info("--- AUDITOR NODE ---")
+    if not auditor_agent:
+        logger.warning("Auditor agent not found.")
+        return {"audit_passed": True, "audit_report": "Auditor missing, skipping"}
 
-
-def node_analyser(state: AgentState):
-    logger.info("--- ANALYSER NODE ---")
-    if not analyser_agent:
-        logger.warning("Analyser agent not found.")
-        return {"analysis_result": "N/A - Agent missing"}
+    report = auditor_agent.audit(state["project_path"])
     
-    result = analyser_agent.analyze(state["project_path"], state["error_context"])
+    passed = "Passed" in report or "passed" in report # Mock logic
+    
     return {
-        "analysis_result": result,
-        "history": [{"agent": "Analyser", "action": "analyze", "result": result, "iteration": state["current_iteration"]}]
+        "audit_report": report,
+        "audit_passed": passed,
+         "history": [{"agent": "Auditor", "action": "audit", "result": report, "iteration": state["current_iteration"]}]
     }
+
 
 def node_fixer(state: AgentState):
     logger.info("--- FIXER NODE ---")
@@ -66,6 +63,7 @@ def node_fixer(state: AgentState):
         "history": [{"agent": "Fixer", "action": "fix", "result": fixes, "iteration": current_iter}]
     }
 
+
 def node_judge(state: AgentState):
     logger.info("--- JUDGE NODE ---")
     if not judge_agent:
@@ -83,84 +81,50 @@ def node_judge(state: AgentState):
         "history": [{"agent": "Judge", "action": "judge", "result": result, "iteration": state["current_iteration"]}]
     }
 
-def node_auditor(state: AgentState):
-    logger.info("--- AUDITOR NODE ---")
-    if not auditor_agent:
-        logger.warning("Auditor agent not found.")
-        return {"audit_passed": True, "audit_report": "Auditor missing, skipping"}
 
-    # Auditor checks quality/security
-    report = auditor_agent.audit(state["project_path"])
-    
-    # Simple logic: assume report string contains "Passed" or we just manually verify for now
-    # Ideally Auditor returns a structured object too.
-    passed = "Passed" in report or "passed" in report # Mock logic
-    
-    return {
-        "audit_report": report,
-        "audit_passed": passed,
-         "history": [{"agent": "Auditor", "action": "audit", "result": report, "iteration": state["current_iteration"]}]
-    }
 
 # Edges
-def should_continue_fix(state: AgentState) -> Literal["auditor", "fixer", "end"]:
+# Edges
+def should_continue_fix(state: AgentState) -> Literal["auditor", "end"]:
     if state["is_fixed"]:
-        return "auditor"
+        logger.info("Project is fixed! Exiting.")
+        return "end"
     
     if state["current_iteration"] >= state["max_iterations"]:
-        logger.info("Max iterations reached.")
+        logger.info("Max iterations reached. Exiting.")
         return "end"
     
-    return "fixer"
-
-def should_end_audit(state: AgentState) -> Literal["end", "fixer"]:
-    if state["audit_passed"]:
-        return "end"
-    
-    # If audit failed, and we have iterations left, go back to fix
-    if state["current_iteration"] < state["max_iterations"]:
-        # Update feedback to include audit report so fixer knows what to fix
-        # Note: We might want to append to judge_feedback or have separate field
-        return "fixer"
-    
-    return "end"
+    logger.info(f"Project not fixed yet. Iteration {state['current_iteration']} / {state['max_iterations']}. Restarting cycle.")
+    return "auditor"
 
 
 def create_workflow():
     workflow = StateGraph(AgentState)
 
     # Add Nodes
-    workflow.add_node("analyser", node_analyser)
+    workflow.add_node("auditor", node_auditor)
     workflow.add_node("fixer", node_fixer)
     workflow.add_node("judge", node_judge)
-    workflow.add_node("auditor", node_auditor)
 
     # Set Entry Point
-    workflow.set_entry_point("analyser")
+    workflow.set_entry_point("auditor")
 
     # Add Edges
-    workflow.add_edge("analyser", "fixer")
+    # Auditor -> Fixer
+    workflow.add_edge("auditor", "fixer")
+    
+    # Fixer -> Judge
     workflow.add_edge("fixer", "judge")
     
-    # Conditional Edge from Judge
+    # Judge -> Conditional (Auditor or End)
     workflow.add_conditional_edges(
         "judge",
         should_continue_fix,
         {
             "auditor": "auditor",
-            "fixer": "fixer",
             "end": END
-        }
-    )
-    
-    # Conditional Edge from Auditor
-    workflow.add_conditional_edges(
-        "auditor",
-        should_end_audit,
-        {
-            "end": END,
-            "fixer": "fixer"
         }
     )
 
     return workflow.compile()
+

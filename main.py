@@ -4,7 +4,7 @@ import os
 from dotenv import load_dotenv
 from src.utils.logger import log_experiment
 from src.utils.SandboxSetup import setup_project_sandbox
-from src.agents.fixer.FixerAgent import FixerAgent
+
 
 load_dotenv()
 
@@ -29,10 +29,7 @@ def main():
         # 1. Setup Sandbox
         setup_project_sandbox(args.target_dir)
 
-        # 2. Initialize Fixer Agent
-        fixer = FixerAgent()
-        
-        # 3. Define Analysis (Mock or User Provided)
+        # 2. Define Analysis (Mock or User Provided)
         analysis_input = args.analysis
         if not analysis_input:
             # Default mock analysis for the known test case if not provided
@@ -46,19 +43,23 @@ def main():
 
         print(f"\n📋 Analysis Context:\n{analysis_input}\n")
 
-        # 4. Run Fixer
-        print("�️  Running FixerAgent...")
-        result = fixer.fix(
-            project_path=args.target_dir,
-            analysis_result=analysis_input,
-            judge_feedback=""
-        )
+        # 3. Initialize and Run Orchestrator
+        from src.orchestration.orchestrator import Orchestrator
         
-        print("\n✅ Fixer Output:")
-        print(result)
+        print("🤖 Initializing Orchestrator Swarm...")
+        orchestrator = Orchestrator(project_path=args.target_dir, error_context=analysis_input)
+        
+        print("▶️  Starting Orchestration Loop...")
+        final_state = orchestrator.start()
+        
+        print("\n🏁 Orchestration Finished.")
+        print("Final State Summary:")
+        print(f"  Fixed: {final_state.get('is_fixed')}")
+        print(f"  Iterations: {final_state.get('current_iteration')}")
+        print(f"  Audit Passed: {final_state.get('audit_passed')}")
         
     except Exception as e:
-        print(f"❌ Fixer run failed: {e}")
+        print(f"❌ Orchestration failed: {e}")
         import traceback
         traceback.print_exc()
 

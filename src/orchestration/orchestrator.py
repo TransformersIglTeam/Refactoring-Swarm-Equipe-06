@@ -19,7 +19,7 @@ class Orchestrator:
             "project_path": project_path,
             "error_context": error_context,
             "current_iteration": 0,
-            "max_iterations": 5,
+            "max_iterations": 10,
             "analysis_result": None,
             "proposed_fixes": [],
             "judge_feedback": None,

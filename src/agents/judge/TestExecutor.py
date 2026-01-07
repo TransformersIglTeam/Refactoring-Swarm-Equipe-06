@@ -39,7 +39,7 @@ class TestExecutor:
             log_experiment(
                 agent_name=self.agent_name,
                 model_used=self.model_name,
-                action=ActionType.DEBUG,
+                action=ActionType.ANALYSIS,
                 details={
                     "input_prompt": f"Looking for test files in {target_dir}",
                     "output_response": "No test files found",
@@ -57,7 +57,7 @@ class TestExecutor:
         log_experiment(
             agent_name=self.agent_name,
             model_used=self.model_name,
-            action=ActionType.DEBUG,
+            action=ActionType.ANALYSIS,
             details={
                 "input_prompt": f"Execute pytest on {len(test_files)} test file(s)",
                 "output_response": f"Found tests: {[os.path.basename(f) for f in test_files]}",
@@ -102,7 +102,7 @@ class TestExecutor:
         log_experiment(
             agent_name=self.agent_name,
             model_used=self.model_name,
-            action=ActionType.DEBUG,
+            action=ActionType.ANALYSIS,
             details={
                 "input_prompt": f"Validate test results for {target_dir}",
                 "output_response": f"Tests completed: {passed} passed, {failed} failed",

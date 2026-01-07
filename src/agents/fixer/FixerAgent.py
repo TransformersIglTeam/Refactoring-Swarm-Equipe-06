@@ -78,7 +78,7 @@ class FixerAgent(BaseAgent):
             f"Fix the project at {project_path}.\n"
             f"ANALYSIS: {analysis_result}\n"
             f"FEEDBACK: {judge_feedback}\n"
-            f"Please identify read the audit_report.md to know the steps to execute to fix the errors , read it, and then overwrite it with the fixed content."
+            f"First, read 'audit_report.md' in the project root (do not include the project folder name in the path) to understand the required fixes. Then apply the fixes."
         )
         
         if self.agent_executor:

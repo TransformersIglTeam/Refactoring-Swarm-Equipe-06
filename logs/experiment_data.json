@@ -3371,5 +3371,351 @@
             "output_response": "Instance created: <class 'langchain_google_genai.llms.GoogleGenerativeAI'>"
         },
         "status": "SUCCESS"
+    },
+    {
+        "id": "3ca10a52-79ff-46b2-8617-bad76b6f7e2c",
+        "timestamp": "2026-01-07T17:02:32.639687",
+        "agent": "BaseAgent",
+        "model": "gemini-2.5-flash-lite",
+        "action": "DEBUG",
+        "details": {
+            "input_prompt": "Instantiate langchain_google_genai.GoogleGenAI for model gemini-2.5-flash-lite",
+            "output_response": "Instance created: <class 'langchain_google_genai.llms.GoogleGenerativeAI'>"
+        },
+        "status": "SUCCESS"
+    },
+    {
+        "id": "2176aee5-1e7e-45fe-b1ab-31404ebcc1ae",
+        "timestamp": "2026-01-07T17:02:32.688614",
+        "agent": "BaseAgent",
+        "model": "gemini-2.5-flash-lite",
+        "action": "DEBUG",
+        "details": {
+            "input_prompt": "Instantiate langchain_google_genai.GoogleGenAI for model gemini-2.5-flash-lite",
+            "output_response": "Instance created: <class 'langchain_google_genai.llms.GoogleGenerativeAI'>"
+        },
+        "status": "SUCCESS"
+    },
+    {
+        "id": "f40be49c-6fb9-4fca-95c3-19b60211c171",
+        "timestamp": "2026-01-07T17:02:32.699158",
+        "agent": "BaseAgent",
+        "model": "gemini-2.5-flash",
+        "action": "DEBUG",
+        "details": {
+            "input_prompt": "Instantiate langchain_google_genai.GoogleGenAI for model gemini-2.5-flash",
+            "output_response": "Instance created: <class 'langchain_google_genai.llms.GoogleGenerativeAI'>"
+        },
+        "status": "SUCCESS"
+    },
+    {
+        "id": "25993dfb-2a79-4103-9c65-e904d7e6cec2",
+        "timestamp": "2026-01-07T17:02:32.706255",
+        "agent": "BaseAgent",
+        "model": "gemini-2.5-flash",
+        "action": "DEBUG",
+        "details": {
+            "input_prompt": "Instantiate langchain_google_genai.GoogleGenAI for model gemini-2.5-flash",
+            "output_response": "Instance created: <class 'langchain_google_genai.llms.GoogleGenerativeAI'>"
+        },
+        "status": "SUCCESS"
+    },
+    {
+        "id": "3d56b280-5c07-4263-bbf0-2d612290ce1b",
+        "timestamp": "2026-01-07T17:02:39.660575",
+        "agent": "Auditor_Agent",
+        "model": "gemini-2.5-flash-lite",
+        "action": "CODE_ANALYSIS",
+        "details": {
+            "input_prompt": "Audit the project in the sandbox directory.\nThe sandbox root is: /home/nbx/Documents/agentic/Refactoring-Swarm-Equipe-06/test_agent_project\nAll file paths should be relative to the sandbox root (use '.' for current directory, or file names like 'bad_code.py').\nPlease analyze the code, create a summary and a TODO list of fixes.\nSave the report to a file named 'audit_report.md' in the sandbox root directory.",
+            "output_response": "The project audit is complete. A report named 'audit_report.md' has been generated in the sandbox root directory, detailing the findings from Pylint and docstring analysis, along with a TODO list for necessary fixes."
+        },
+        "status": "SUCCESS"
+    },
+    {
+        "id": "aa8b3132-216b-4539-a659-ceeb6988892c",
+        "timestamp": "2026-01-07T17:02:41.913552",
+        "agent": "Fixer_Agent",
+        "model": "gemini-2.5-flash-lite",
+        "action": "FIX",
+        "details": {
+            "input_prompt": "Fix the project at test_agent_project.\nANALYSIS: None\nFEEDBACK: None\nPlease identify read the audit_report.md to know the steps to execute to fix the errors , read it, and then overwrite it with the fixed content.",
+            "output_response": "I am unable to fix the project at `test_agent_project` because the `audit_report.md` file does not exist. Please ensure the file is present in the `test_agent_project` directory or provide me with its content."
+        },
+        "status": "SUCCESS"
+    },
+    {
+        "id": "e786a627-08e1-4e28-8ea9-e6ea2816cf62",
+        "timestamp": "2026-01-07T17:02:41.966235",
+        "agent": "Judge_Agent",
+        "model": "gemini-2.5-flash",
+        "action": "DEBUG",
+        "details": {
+            "input_prompt": "Execute pytest on 1 test file(s)",
+            "output_response": "Found tests: ['test_main.py']",
+            "target_dir": "test_agent_project",
+            "test_files_count": 1
+        },
+        "status": "RUNNING"
+    },
+    {
+        "id": "68b8c4ed-7e86-435d-9aaa-e47e2ec61157",
+        "timestamp": "2026-01-07T17:02:42.173039",
+        "agent": "Judge_Agent",
+        "model": "gemini-2.5-flash",
+        "action": "DEBUG",
+        "details": {
+            "input_prompt": "Validate test results for test_agent_project",
+            "output_response": "Tests completed: 2 passed, 0 failed",
+            "tests_passed": 2,
+            "tests_failed": 0,
+            "execution_time": 0.18853545188903809
+        },
+        "status": "SUCCESS"
+    },
+    {
+        "id": "716658e1-d445-4241-b9e6-572f66c0ab5b",
+        "timestamp": "2026-01-07T17:02:44.708113",
+        "agent": "Judge_Agent",
+        "model": "gemini-2.5-flash",
+        "action": "CODE_ANALYSIS",
+        "details": {
+            "input_prompt": "You are an automated judge . Analyze the pytest output and return a JSON object with keys: decision, reason, failures, suggestions. - decision: one of PASS, RETRY, MAX_ITERATIONS.\n- reason: short human-readable reason.\n- failures: array of objects with test_name, error_type, error_message, fix_suggestion.\n- suggestions: array of short suggestion strings.\nRespond with pure JSON only.\n\nTEST_SUMMARY:\nStatus: SUCCESS\nPassed: 2\nFailed: 0\nERROR_MESSAGES:\n[]\n\nOUTPUT_EXCERPT:\n============================= test session starts ==============================\nplatform linux -- Python 3.11.14, pytest-7.4.4, pluggy-1.6.0 -- /home/nbx/Documents/agentic/Refactoring-Swarm-Equipe-06/venv/bin/python\ncachedir: .pytest_cache\nrootdir: /home/nbx/Documents/agentic/Refactoring-Swarm-Equipe-06\nplugins: anyio-4.12.0\ncollecting ... collected 2 items\n\ntest_agent_project/tests/test_main.py::test_add_numbers PASSED           [ 50%]\ntest_agent_project/tests/test_main.py::test_multiply_numbers PASSED      [100%]\n\n============================== 2 passed in 0.00s ===============================\n\n\n",
+            "output_response": "```json\n{\n  \"decision\": \"PASS\",\n  \"reason\": \"All tests passed successfully.\",\n  \"failures\": [],\n  \"suggestions\": [\n    \"Maintain good test coverage.\"\n  ]\n}\n```"
+        },
+        "status": "SUCCESS"
+    },
+    {
+        "id": "25e24559-b6ce-4f53-82ca-9c8445a0c0e7",
+        "timestamp": "2026-01-07T17:03:55.362131",
+        "agent": "BaseAgent",
+        "model": "gemini-2.5-flash-lite",
+        "action": "DEBUG",
+        "details": {
+            "input_prompt": "Instantiate langchain_google_genai.GoogleGenAI for model gemini-2.5-flash-lite",
+            "output_response": "Instance created: <class 'langchain_google_genai.llms.GoogleGenerativeAI'>"
+        },
+        "status": "SUCCESS"
+    },
+    {
+        "id": "c3201754-6aa1-45f6-a445-db199212cb43",
+        "timestamp": "2026-01-07T17:03:55.410851",
+        "agent": "BaseAgent",
+        "model": "gemini-2.5-flash-lite",
+        "action": "DEBUG",
+        "details": {
+            "input_prompt": "Instantiate langchain_google_genai.GoogleGenAI for model gemini-2.5-flash-lite",
+            "output_response": "Instance created: <class 'langchain_google_genai.llms.GoogleGenerativeAI'>"
+        },
+        "status": "SUCCESS"
+    },
+    {
+        "id": "d3f77df5-9180-42de-8ed5-f4ea974f0423",
+        "timestamp": "2026-01-07T17:03:55.421071",
+        "agent": "BaseAgent",
+        "model": "gemini-2.5-flash",
+        "action": "DEBUG",
+        "details": {
+            "input_prompt": "Instantiate langchain_google_genai.GoogleGenAI for model gemini-2.5-flash",
+            "output_response": "Instance created: <class 'langchain_google_genai.llms.GoogleGenerativeAI'>"
+        },
+        "status": "SUCCESS"
+    },
+    {
+        "id": "0290de2a-23a4-46bd-b390-80bddf1ca098",
+        "timestamp": "2026-01-07T17:03:55.427701",
+        "agent": "BaseAgent",
+        "model": "gemini-2.5-flash",
+        "action": "DEBUG",
+        "details": {
+            "input_prompt": "Instantiate langchain_google_genai.GoogleGenAI for model gemini-2.5-flash",
+            "output_response": "Instance created: <class 'langchain_google_genai.llms.GoogleGenerativeAI'>"
+        },
+        "status": "SUCCESS"
+    },
+    {
+        "id": "ed0276f0-0db6-4939-855f-870330ea0b52",
+        "timestamp": "2026-01-07T17:04:05.553452",
+        "agent": "Auditor_Agent",
+        "model": "gemini-2.5-flash-lite",
+        "action": "CODE_ANALYSIS",
+        "details": {
+            "input_prompt": "Audit the project in the sandbox directory.\nThe sandbox root is: /home/nbx/Documents/agentic/Refactoring-Swarm-Equipe-06/test_agent_project\nAll file paths should be relative to the sandbox root (use '.' for current directory, or file names like 'bad_code.py').\nPlease analyze the code, create a summary and a TODO list of fixes.\nSave the report to a file named 'audit_report.md' in the sandbox root directory.",
+            "output_response": "The project audit is complete. A report has been generated and saved to `audit_report.md` in the sandbox root directory. This report includes a summary of Pylint and docstring analysis findings, as well as a TODO list of recommended fixes."
+        },
+        "status": "SUCCESS"
+    },
+    {
+        "id": "1ba90bea-89cc-4354-847c-2c346e6a9146",
+        "timestamp": "2026-01-07T17:06:11.075330",
+        "agent": "BaseAgent",
+        "model": "gemini-2.5-flash-lite",
+        "action": "DEBUG",
+        "details": {
+            "input_prompt": "Instantiate langchain_google_genai.GoogleGenAI for model gemini-2.5-flash-lite",
+            "output_response": "Instance created: <class 'langchain_google_genai.llms.GoogleGenerativeAI'>"
+        },
+        "status": "SUCCESS"
+    },
+    {
+        "id": "4eabf322-d84d-42d6-89db-5a39fd3071a5",
+        "timestamp": "2026-01-07T17:06:11.124232",
+        "agent": "BaseAgent",
+        "model": "gemini-2.5-flash-lite",
+        "action": "DEBUG",
+        "details": {
+            "input_prompt": "Instantiate langchain_google_genai.GoogleGenAI for model gemini-2.5-flash-lite",
+            "output_response": "Instance created: <class 'langchain_google_genai.llms.GoogleGenerativeAI'>"
+        },
+        "status": "SUCCESS"
+    },
+    {
+        "id": "3bed2619-898f-4a8f-87dc-14bc9f74b83a",
+        "timestamp": "2026-01-07T17:06:11.134568",
+        "agent": "BaseAgent",
+        "model": "gemini-2.5-flash",
+        "action": "DEBUG",
+        "details": {
+            "input_prompt": "Instantiate langchain_google_genai.GoogleGenAI for model gemini-2.5-flash",
+            "output_response": "Instance created: <class 'langchain_google_genai.llms.GoogleGenerativeAI'>"
+        },
+        "status": "SUCCESS"
+    },
+    {
+        "id": "151db99f-281c-44fc-8b94-ca90a3a9f8de",
+        "timestamp": "2026-01-07T17:06:11.143216",
+        "agent": "BaseAgent",
+        "model": "gemini-2.5-flash",
+        "action": "DEBUG",
+        "details": {
+            "input_prompt": "Instantiate langchain_google_genai.GoogleGenAI for model gemini-2.5-flash",
+            "output_response": "Instance created: <class 'langchain_google_genai.llms.GoogleGenerativeAI'>"
+        },
+        "status": "SUCCESS"
+    },
+    {
+        "id": "b6b8dcf1-e6ef-427f-84f3-5096333aff4e",
+        "timestamp": "2026-01-07T17:06:21.671719",
+        "agent": "Auditor_Agent",
+        "model": "gemini-2.5-flash-lite",
+        "action": "CODE_ANALYSIS",
+        "details": {
+            "input_prompt": "Audit the project in the sandbox directory.\nThe sandbox root is: /home/nbx/Documents/agentic/Refactoring-Swarm-Equipe-06/test_agent_project\nAll file paths should be relative to the sandbox root (use '.' for current directory, or file names like 'bad_code.py').\nPlease analyze the code, create a summary and a TODO list of fixes.\nSave the report to a file named 'audit_report.md' in the sandbox root directory.",
+            "output_response": "The audit of the project has been completed. Critical errors were found in the `src` directory that prevent further analysis. A report detailing these issues and a TODO list for fixes has been saved to `audit_report.md`."
+        },
+        "status": "SUCCESS"
+    },
+    {
+        "id": "9d34ee59-834b-4dfd-abef-df15f8f397e6",
+        "timestamp": "2026-01-07T17:06:23.781259",
+        "agent": "Fixer_Agent",
+        "model": "gemini-2.5-flash-lite",
+        "action": "FIX",
+        "details": {
+            "input_prompt": "Fix the project at test_agent_project.\nANALYSIS: None\nFEEDBACK: None\nPlease identify read the audit_report.md to know the steps to execute to fix the errors , read it, and then overwrite it with the fixed content.",
+            "output_response": "The file 'audit_report.md' does not exist in the 'test_agent_project' directory. Please ensure the file path is correct or provide the content of the audit report so I can proceed with fixing the project."
+        },
+        "status": "SUCCESS"
+    },
+    {
+        "id": "a8c16a87-d572-4bfd-98b5-63f886f78e45",
+        "timestamp": "2026-01-07T17:06:23.838332",
+        "agent": "Judge_Agent",
+        "model": "gemini-2.5-flash",
+        "action": "DEBUG",
+        "details": {
+            "input_prompt": "Execute pytest on 1 test file(s)",
+            "output_response": "Found tests: ['test_main.py']",
+            "target_dir": "test_agent_project",
+            "test_files_count": 1
+        },
+        "status": "RUNNING"
+    },
+    {
+        "id": "68ef9c95-da45-473f-be9f-d066f556e11b",
+        "timestamp": "2026-01-07T17:06:24.126480",
+        "agent": "Judge_Agent",
+        "model": "gemini-2.5-flash",
+        "action": "DEBUG",
+        "details": {
+            "input_prompt": "Validate test results for test_agent_project",
+            "output_response": "Tests completed: 0 passed, 0 failed",
+            "tests_passed": 0,
+            "tests_failed": 0,
+            "execution_time": 0.27005934715270996
+        },
+        "status": "FAILED"
+    },
+    {
+        "id": "fe54ce15-15fa-47de-bef3-88a95f119336",
+        "timestamp": "2026-01-07T17:06:36.069674",
+        "agent": "Judge_Agent",
+        "model": "gemini-2.5-flash",
+        "action": "CODE_ANALYSIS",
+        "details": {
+            "input_prompt": "You are an automated judge . Analyze the pytest output and return a JSON object with keys: decision, reason, failures, suggestions. - decision: one of PASS, RETRY, MAX_ITERATIONS.\n- reason: short human-readable reason.\n- failures: array of objects with test_name, error_type, error_message, fix_suggestion.\n- suggestions: array of short suggestion strings.\nRespond with pure JSON only.\n\nTEST_SUMMARY:\nStatus: ERROR\nPassed: 0\nFailed: 0\nERROR_MESSAGES:\n[\"collecting test_agent_project/tests/test_main.py ____________\", \"test_agent_project/tests/test_main.py\"]\n\nOUTPUT_EXCERPT:\n============================= test session starts ==============================\nplatform linux -- Python 3.11.14, pytest-7.4.4, pluggy-1.6.0 -- /home/nbx/Documents/agentic/Refactoring-Swarm-Equipe-06/venv/bin/python\ncachedir: .pytest_cache\nrootdir: /home/nbx/Documents/agentic/Refactoring-Swarm-Equipe-06\nplugins: anyio-4.12.0\ncollecting ... collected 0 items / 1 error\n\n==================================== ERRORS ====================================\n____________ ERROR collecting test_agent_project/tests/test_main.py ____________\nvenv/lib/python3.11/site-packages/_pytest/python.py:617: in _importtestmodule\n    mod = import_path(self.path, mode=importmode, root=self.config.rootpath)\nvenv/lib/python3.11/site-packages/_pytest/pathlib.py:567: in import_path\n    importlib.import_module(module_name)\n/usr/lib/python3.11/importlib/__init__.py:126: in import_module\n    return _bootstrap._gcd_import(name[level:], package, level)\n<frozen importlib._bootstrap>:1204: in _gcd_import\n    ???\n<frozen importlib._bootstrap>:1176: in _find_and_load\n    ???\n<frozen importlib._bootstrap>:1147: in _find_and_load_unlocked\n    ???\n<frozen importlib._bootstrap>:690: in _load_unlocked\n    ???\nvenv/lib/python3.11/site-packages/_pytest/assertion/rewrite.py:186: in exec_module\n    exec(co, module.__dict__)\ntest_agent_project/tests/test_main.py:2: in <module>\n    from src.main import add_numbers, multiply_numbers\nE     File \"/home/nbx/Documents/agentic/Refactoring-Swarm-Equipe-06/test_agent_project/src/main.py\", line 7\nE       except ValueError as exc:\nE       ^^^^^^\nE   SyntaxError: invalid syntax\n=========================== short test summary info ============================\nERROR test_agent_project/tests/test_main.py\n!!!!!!!!!!!!!!!!!!!! Interrupted: 1 error during collection !!!!!!!!!!!!!!!!!!!!\n=============================== 1 error in 0.06s ===============================\n\n\n",
+            "output_response": "```json\n{\n  \"decision\": \"RETRY\",\n  \"reason\": \"Pytest encountered a SyntaxError in 'src/main.py' during test collection, preventing any tests from running.\",\n  \"failures\": [\n    {\n      \"test_name\": \"test_agent_project/tests/test_main.py (collection error)\",\n      \"error_type\": \"SyntaxError\",\n      \"error_message\": \"invalid syntax at line 7 in 'test_agent_project/src/main.py': `except ValueError as exc:`\",\n      \"fix_suggestion\": \"The 'except' statement on line 7 of 'src/main.py' is not preceded by a 'try' block. Ensure all 'except' blocks are part of a 'try-except' statement. It appears the 'add_numbers' function might be missing its 'try' block.\"\n    }\n  ],\n  \"suggestions\": [\n    \"Correct the SyntaxError in 'test_agent_project/src/main.py' by ensuring all 'except' blocks are paired with a 'try' block.\",\n    \"Specifically, review the 'add_numbers' function in 'src/main.py' and add a 'try' block if 'ValueError' is intended to be caught.\"\n  ]\n}\n```"
+        },
+        "status": "SUCCESS"
+    },
+    {
+        "id": "1e2f581f-22f7-4206-aa2a-693e18f570e0",
+        "timestamp": "2026-01-07T17:24:32.708112",
+        "agent": "BaseAgent",
+        "model": "gemini-2.5-flash-lite",
+        "action": "DEBUG",
+        "details": {
+            "input_prompt": "Instantiate langchain_google_genai.GoogleGenAI for model gemini-2.5-flash-lite",
+            "output_response": "Instance created: <class 'langchain_google_genai.llms.GoogleGenerativeAI'>"
+        },
+        "status": "SUCCESS"
+    },
+    {
+        "id": "90a73302-9d6a-4627-827c-d59816c18f88",
+        "timestamp": "2026-01-07T17:24:32.762194",
+        "agent": "BaseAgent",
+        "model": "gemini-2.5-flash-lite",
+        "action": "DEBUG",
+        "details": {
+            "input_prompt": "Instantiate langchain_google_genai.GoogleGenAI for model gemini-2.5-flash-lite",
+            "output_response": "Instance created: <class 'langchain_google_genai.llms.GoogleGenerativeAI'>"
+        },
+        "status": "SUCCESS"
+    },
+    {
+        "id": "aec804e5-12da-4881-9b94-2ed9c083e577",
+        "timestamp": "2026-01-07T17:24:32.771781",
+        "agent": "BaseAgent",
+        "model": "gemini-2.5-flash",
+        "action": "DEBUG",
+        "details": {
+            "input_prompt": "Instantiate langchain_google_genai.GoogleGenAI for model gemini-2.5-flash",
+            "output_response": "Instance created: <class 'langchain_google_genai.llms.GoogleGenerativeAI'>"
+        },
+        "status": "SUCCESS"
+    },
+    {
+        "id": "8fff4e9f-0a88-4051-9c8d-9c3ee18e3e9f",
+        "timestamp": "2026-01-07T17:24:32.778954",
+        "agent": "BaseAgent",
+        "model": "gemini-2.5-flash",
+        "action": "DEBUG",
+        "details": {
+            "input_prompt": "Instantiate langchain_google_genai.GoogleGenAI for model gemini-2.5-flash",
+            "output_response": "Instance created: <class 'langchain_google_genai.llms.GoogleGenerativeAI'>"
+        },
+        "status": "SUCCESS"
+    },
+    {
+        "id": "61d5dc98-6c43-45f5-bd80-b46d77e4e9df",
+        "timestamp": "2026-01-07T17:24:48.591918",
+        "agent": "Auditor_Agent",
+        "model": "gemini-2.5-flash-lite",
+        "action": "CODE_ANALYSIS",
+        "details": {
+            "input_prompt": "Audit the project in the sandbox directory.\nThe sandbox root is: /home/nbx/Documents/agentic/Refactoring-Swarm-Equipe-06/test_agent_project\nAll file paths should be relative to the sandbox root (use '.' for current directory, or file names like 'bad_code.py').\nPlease analyze the code, create a summary and a TODO list of fixes.\nSave the report to a file named 'audit_report.md' in the sandbox root directory.",
+            "output_response": "The project audit is complete. A report has been generated and saved to `audit_report.md`. This report includes a summary of the code analysis and a prioritized TODO list of fixes, starting with critical syntax errors."
+        },
+        "status": "SUCCESS"
     }
 ]

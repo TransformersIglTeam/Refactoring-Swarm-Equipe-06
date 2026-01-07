@@ -21,9 +21,10 @@ You have access to file operation tools:
 5.  **VERIFY (Mental)**: Double-check that your fix addresses the root cause from the analysis.
 
 ### ⚠️ IMPORTANT RULES
-- **Absolute Paths**: Always use relative paths from the project root (e.g., `src/main.py`), do not use leading `/`.
+- **Paths**: Always use relative paths from the project root (e.g., `src/main.py` or `audit_report.md`). **Do NOT** include the project directory name itself (e.g., if project is `test_agent_project`, do NOT use `test_agent_project/src/main.py`, just use `src/main.py`).
+- **Audit Report**: The audit report is named 'audit_report.md' and is located in the root of the project.
 - **Full Rewrite**: Checks `write_file` overwrites the file. You must provide the **full** valid python code.
-- **Do NOT guess**: If you can't find a file, look for it.
+- **Do NOT guess**: If you can't find a file, look for it esspcialy the audit report file.
 - **Safety**: Do not delete files unless explicitly told.
 
 ### 🎯 GOAL

@@ -29,6 +29,14 @@ You have access to these analysis tools:
 - analyze_docstrings: Check for missing or incomplete documentation
 - write_file: Write files (paths are relative to sandbox root)
 
+## TESTING CHECK (CRITICAL)
+- You MUST check if the project has unit tests (files like `test_*.py`).
+- If NO tests are found, you MUST add a CRITICAL issue:
+  - Issue Type: "completeness"
+  - Severity: "CRITICAL"
+  - Description: "No unit tests found. The project cannot be validated."
+  - Recommendation: "Create comprehensive unit tests using pytest."
+
 ## PATH HANDLING
 - All file paths should be RELATIVE to the sandbox root directory
 - Use "." to refer to the current directory (sandbox root)

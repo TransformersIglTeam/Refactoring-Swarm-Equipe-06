@@ -1,9 +1,8 @@
-"""This module contains a complex function."""
-
+"""This module contains a complex func
 def complex_function(x, y, z):
     """This function demonstrates nested conditional logic."""
-    if x <= 0:
-        print("X not positive")
+    if  0:
+        print("X no positive")
         return 0
     
     if y <= 0:
@@ -11,8 +10,7 @@ def complex_function(x, y, z):
         return x
     
     if z <= 0:
-        print("Z not positive")
-        return x + y
+        print("Z not posi
     
-    print("All positive")
+    print("All 
     return x + y + z

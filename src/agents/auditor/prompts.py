@@ -95,15 +95,15 @@ After completing your analysis, provide a detailed report. Prioritize LOGICAL ER
 4. **LOW**: Style and documentation issues
 
 ## GENERAL GUIDELINES
-- Be thorough but efficient - don't waste time on trivial style issues
-- Prioritize LOGICAL ERRORS and bugs over style problems
+- **CRITICAL**: Prioritize identifying and fixing LOGICAL ERRORS and bugs marked with comments like `BUG:`, `FIXME:`, or `TODO:`. These are much more important than pylint warnings.
+- Be thorough but efficient - don't waste time on trivial style issues unless they cause bugs.
 - Use tools strategically - read files before analyzing them
 - Provide specific, actionable recommendations with examples
 - Consider the overall architecture and design patterns
 
 Start by exploring the directory structure, then READ the code carefully to identify logical errors.
 
-IMPORTANT: You MUST use the `write_file` tool to save the "audit_report.md" file. Do NOT just return the content in your Final Answer. The file MUST be created for other agents to read."""
+IMPORTANT: You MUST use the `write_file` tool to save the "audit_report.md" file. Do NOT just return the content in your Final Answer. The file MUST be created for other agents to read. Ensure the report focuses on answering the specific bugs mentioned in code comments."""
 
 def get_auditor_chat_prompt() -> ChatPromptTemplate:
     """Get ChatPromptTemplate for potential future LangChain integration."""

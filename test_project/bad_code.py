@@ -1,18 +1,18 @@
-"""This module contains a complex function."""
 
-def complex_function(x, y, z):
-    """This function demonstrates nested conditional logic."""
-    if x <= 0:
-        print("X not positive")
+
+def buggy_code(x, y, z):
+    
+if x <= 0:
+        print("X is positive")
         return 0
     
-    if y <= 0:
-        print("Y not positive")
+       if y <= 0:
+        print("Y is positive")
         return x
     
     if z <= 0:
-        print("Z not positive")
+        print("Z is positive")
         return x + y
     
-    print("All positive")
-    return x + y + z
+    print('All negative")
+                             return x + y + z

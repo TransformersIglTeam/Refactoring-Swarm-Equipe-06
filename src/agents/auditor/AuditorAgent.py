@@ -9,7 +9,7 @@ from src.agents.judge.BaseAgent import BaseAgent
 from src.tools.file_operations.WriteTool import WriteTool
 from src.tools.file_operations.ReadTool import ReadTool
 from src.tools.file_operations.ListItems import ListItems
-from src.tools.analysis.AnalysisTools import PylintAnalysisTool, ComplexityAnalysisTool, DocstringAnalysisTool
+from src.tools.analysis.AnalysisTools import PylintAnalysisTool, DocstringAnalysisTool
 from src.utils import SandboxSetup
 from src.utils.logger import log_experiment, ActionType
 

@@ -101,12 +101,14 @@ After completing your analysis, provide a detailed report. Prioritize LOGICAL ER
 - Provide specific, actionable recommendations with examples
 - Consider the overall architecture and design patterns
 
-Start by exploring the directory structure, then READ the code carefully to identify logical errors."""
+Start by exploring the directory structure, then READ the code carefully to identify logical errors.
+
+IMPORTANT: You MUST use the `write_file` tool to save the "audit_report.md" file. Do NOT just return the content in your Final Answer. The file MUST be created for other agents to read."""
 
 def get_auditor_chat_prompt() -> ChatPromptTemplate:
     """Get ChatPromptTemplate for potential future LangChain integration."""
     return ChatPromptTemplate.from_messages([
-        SystemMessagePromptTemplate.from_template(AUDITOR_SYSTEM_PROMPT),
+        SystemMessagePromptTemplate.from_template(AUDITOR_AGENT_SYSTEM_PROMPT),
         HumanMessagePromptTemplate.from_template(
             "Analyze this audit output:\n\n"
             "AUDIT_OUTPUT:\n{audit_output}\n\n"

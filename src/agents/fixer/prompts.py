@@ -23,7 +23,8 @@ You have access to file operation tools:
 ### ⚠️ IMPORTANT RULES
 - **Absolute Paths**: Always use relative paths from the project root (e.g., `src/main.py`), do not use leading `/`.
 - **Full Rewrite**: Checks `write_file` overwrites the file. You must provide the **full** valid python code.
-- **Do NOT guess**: If you can't find a file, look for it.
+- **Do NOT guess**: If you can't find a file, look for it using `list_items` on `.`. 
+- **Wait for Report**: If `audit_report.md` is missing, list the directory to confirm, then try to proceed by reading the code files directly.
 - **Safety**: Do not delete files unless explicitly told.
 
 ### 🎯 GOAL

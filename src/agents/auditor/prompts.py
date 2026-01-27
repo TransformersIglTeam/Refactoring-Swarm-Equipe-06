@@ -95,11 +95,11 @@ After completing your analysis, provide a detailed report. Prioritize LOGICAL ER
 4. **LOW**: Style and documentation issues
 
 ## GENERAL GUIDELINES
-- **CRITICAL**: Prioritize identifying and fixing LOGICAL ERRORS and bugs marked with comments like `BUG:`, `FIXME:`, or `TODO:`. These are much more important than pylint warnings.
+- **CRITICAL**: Your primary job is to find LOGICAL BUGS (incorrect logic, wrong operators, missing returns). Pylint warnings like "unused variable" are SECONDARY and should be ignored if there are actual bugs.
+- **Bug Hunting**: Look for comments starting with `BUG:`. These are hints!
+- **Report**: Your `audit_report.md` MUST list the logical bugs first.
 - Be thorough but efficient - don't waste time on trivial style issues unless they cause bugs.
 - Use tools strategically - read files before analyzing them
-- Provide specific, actionable recommendations with examples
-- Consider the overall architecture and design patterns
 
 Start by exploring the directory structure, then READ the code carefully to identify logical errors.
 

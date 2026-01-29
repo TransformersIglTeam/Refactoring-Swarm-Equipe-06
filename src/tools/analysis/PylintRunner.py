@@ -5,12 +5,13 @@ import os
 class PylintRunner:
     def __init__(self, timeout: int = 30) -> None:
         self.timeout = timeout
-    def run_analysis(self,target_path): # hada ydir path -> abs path bach nevitiw les problem t3 windows
+    def run_analysis(self, target_path: str) -> dict:
+        """Run pylint on target path. Path is normalized to absolute for cross-platform consistency."""
         target_path = os.path.abspath(target_path)
-        command = ["pylint",
-        target_path,
-        "--output-format=json",
-        #"--rcfile=.pylintrc" m7bsh ymchi hada (lazmlou logic of either creating a file or already in repo)
+        command = [
+            "pylint",
+            target_path,
+            "--output-format=json",
         ]
 
 

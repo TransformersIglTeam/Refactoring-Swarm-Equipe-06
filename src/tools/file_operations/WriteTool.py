@@ -103,11 +103,11 @@ class WriteTool(BaseTool):
 
         # Validate path (PathValidator enforces .py and containment)
         try:
-            ok = validate_path(file_path, SandboxSetup.SANDBOX_ROOT)
+            is_valid_path = validate_path(file_path, SandboxSetup.SANDBOX_ROOT)
         except Exception as e:
             return f"Error validating path: {e}"
 
-        if not ok:
+        if not is_valid_path:
             return f"Error: Unsafe or invalid file path: {file_path}"
 
         # Convert to Path object under sandbox

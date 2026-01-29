@@ -1,5 +1,4 @@
 import os
-import importlib
 from typing import Optional, Any
 from langchain_google_genai import GoogleGenerativeAI
 
@@ -18,7 +17,7 @@ class BaseAgent:
     so unit tests and local runs without API keys still work.
     """
 
-    def __init__(self, model_name: str = "gemini-2.5-flash-lite", api_key_env: str = "GOOGLE_API_KEY"):
+    def __init__(self, model_name: str = "gemini-2.5-flash-lite", api_key_env: str = "GOOGLE_API_KEY") -> None:
         self.model_name = model_name
         self.api_key_env = api_key_env
         self.llm = self._init_llm()

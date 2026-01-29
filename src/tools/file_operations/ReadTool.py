@@ -1,6 +1,5 @@
 from langchain.tools import BaseTool
 from pathlib import Path
-from typing import Optional
 
 from src.utils.PathValidator import validate_path
 from src.utils import SandboxSetup

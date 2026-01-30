@@ -27,3 +27,10 @@ At line:1 char:1
 [34m# Please enter the commit message for your changes. Lines starting[4;1H# with '#' will be ignored, and an empty message aborts the committ[5;1H.
 #
 # [m[35mAuthor:[m[34m    Bakhti Nabil Abdelkafi <nn_bakhti@esi.dz>[m
+[1m[7m.git/COMMIT_EDITMSG [unix] (23:47 30/01/2026)              1,1 Top[1;1H[?25h[?25l[2;7r[m[2;1H[L[1;9r[1;2H[38;5;130mCan't push refs to remote. Try running "Pull" fir[mst to integrate  [2;1Hyour changes.ix: fixing orch[8;20H[1m[7m[+] [unix] (23:47 30/01/2026)[10C1,79 [m[9;1H[K[2;13H[?25h[?25l[9;1H[1m-- INSERT --[3;7r[m[3;1H[2L[1;9r[3;1H[97m[101mwershell -ExecutionPolicy Bypass -File fix_git_conflict.ps1[m[7;1H[94m@@@                                                               [m[8;59H[1m[7m 3,1 [4;1H[?25h[?25l[m[9;1H[K[8;58H[1m[7m3,0-1[4;1H[?25h[?25l[mgit push --set-upstream origin toolsmith[8;35H[1m[7m56 [20C 3,40 [4;40H[?25h[?25l[m[9;1H[1m-- INSERT --[1;7r[m[1;1H[3M[1;9r[2;7r[2;1H[2L[1;9r[2;1Hwershell -ExecutionPolicy Bypass -File simple_git_fix.ps1[6;1H[34m# with '#' will be ignored, and an empty message aborts the committ[7;1H.[m[8;59H[1m[7m 5,1  6%[3;1H[?25h[27m[23m[29m[m[H[2J[?25l[1;1H[97m[101mwershell -ExecutionPolicy Bypass -File fix_git_conflict.ps1[m
+git push --set-upstream origin toolsmith
+wershell -ExecutionPolicy Bypass -File simple_git_fix.ps1
+
+
+[34m# Please enter the commit message for your changes. Lines starting
+# with '#' will be ignored, and an empty message aborts the commit.[m

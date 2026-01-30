@@ -1,0 +1,29 @@
+﻿Fixing Git Conflict...
+
+=== Running: git checkout --theirs logs/experiment_data.json ===
+git : Updated 1 path from the index
+At line:1 char:1
++ git checkout --theirs logs/experiment_data.json 2>&1
++ ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+    + CategoryInfo          : NotSpecified: (Updated 1 path from 
+    the index:String) [], RemoteException
+    + FullyQualifiedErrorId : NativeCommandError
+ 
+
+=== Running: git add logs/experiment_data.json ===
+
+=== Running: git rebase --continue ===
+git : Vim: Warning: Output is not to a terminal
+At line:1 char:1
++ git rebase --continue 2>&1
++ ~~~~~~~~~~~~~~~~~~~~~~~~~~
+    + CategoryInfo          : NotSpecified: (Vim: Warning: O...t 
+    to a terminal:String) [], RemoteException
+    + FullyQualifiedErrorId : NativeCommandError
+ 
+[?1049h[22;0;0t[>4;2m[?1h=[?2004h[?1004h[1;9r[?12h[?12l[22;2t[22;1t[27m[23m[29m[m[H[2J[?25l[9;1H<NAL/Refactoring-Swarm-Equipe-06/.git/COMMIT_EDITMSG"
+<warm-Equipe-06/.git/COMMIT_EDITMSG" [unix] 33L, 1119B[1;1H[38;5;130mfix: fixing orch[m
+
+[34m# Please enter the commit message for your changes. Lines starting[4;1H# with '#' will be ignored, and an empty message aborts the committ[5;1H.
+#
+# [m[35mAuthor:[m[34m    Bakhti Nabil Abdelkafi <nn_bakhti@esi.dz>[m

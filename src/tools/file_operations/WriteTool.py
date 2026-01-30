@@ -5,7 +5,11 @@ from pydantic import BaseModel, Field
 import tempfile
 import shutil
 import ast
+import ast
 import os
+import logging
+
+logger = logging.getLogger(__name__)
 
 from src.utils.PathValidator import validate_path
 from src.utils import SandboxSetup
@@ -97,6 +101,8 @@ class WriteTool(BaseTool):
 
     def _run(self, file_path: str, content: str) -> str:
         """Write content to file with safety checks."""
+        logger.info(f"Writing request for file: {file_path}")
+
         # Ensure sandbox is configured
         if SandboxSetup.SANDBOX_ROOT is None:
             return "Error: Sandbox not initialized"
@@ -153,4 +159,9 @@ class WriteTool(BaseTool):
             return f"Error writing file: {str(e)}"
     
     async def _arun(self, file_path: str, content: str) -> str:
-        raise NotImplementedError("Async writing not implemented")
+        """
+        Asynchronously write content to a file.
+        
+        This method delegates to the synchronous _run method.
+        """
+        return self._run(file_path, content)

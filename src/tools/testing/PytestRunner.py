@@ -3,6 +3,9 @@ import time
 import sys
 import json
 from typing import Tuple, Optional, Union
+import logging
+
+logger = logging.getLogger(__name__)
 
 
 class PytestRunner:
@@ -22,6 +25,7 @@ class PytestRunner:
             Tuple of (success, stdout, stderr, execution_time)
         """
         start_time = time.time()
+        logger.info(f"Starting pytest run in: {target_dir} with timeout: {self.timeout}s")
 
         # Use the current Python executable to ensure the venv's pytest is used
         cmd = [sys.executable, "-m", "pytest", target_dir, "-v", "--tb=short", "--color=no"]

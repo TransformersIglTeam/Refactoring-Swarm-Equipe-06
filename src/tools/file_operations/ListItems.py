@@ -1,6 +1,9 @@
 from langchain.tools import BaseTool
 from pathlib import Path
 from typing import List, Optional
+import logging
+
+logger = logging.getLogger(__name__)
 
 from src.utils import SandboxSetup
 
@@ -29,6 +32,8 @@ class ListItems(BaseTool):
         Returns:
             Newline-separated string of entry names, or an error message string.
         """
+        logger.info(f"Listing directory: {dir_path}")
+
         # Ensure sandbox is configured
         if SandboxSetup.SANDBOX_ROOT is None:
             return "Error: Sandbox not initialized"

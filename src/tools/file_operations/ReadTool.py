@@ -1,6 +1,9 @@
 from langchain.tools import BaseTool
 from pathlib import Path
 from typing import Optional
+import logging
+
+logger = logging.getLogger(__name__)
 
 from src.utils.PathValidator import validate_path
 from src.utils import SandboxSetup
@@ -23,6 +26,7 @@ class ReadTool(BaseTool):
         Returns:
             File content as string or error message
         """
+        logger.info(f"Reading file: {file_path}")
 
         # Ensure sandbox is configured
         if SandboxSetup.SANDBOX_ROOT is None:
@@ -51,5 +55,9 @@ class ReadTool(BaseTool):
             return f"Error reading file: {str(e)}"
 
     async def _arun(self, file_path: str) -> str:
-        """Asynchronous read of the contents of a file."""
+        """
+        Asynchronously read and return the content of a file.
+        
+        This method delegates to the synchronous _run method.
+        """
         return self._run(file_path)

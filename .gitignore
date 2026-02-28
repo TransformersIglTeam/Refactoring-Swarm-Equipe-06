@@ -7,12 +7,3 @@ __pycache__/
 venv/
 .env
 .DS_Store
-
-
-# Dossier de travail temporaire (ne pas récupérer les modifications des étudiants ici)
-sandbox/
-
-# LOGS : On ignore tout le dossier logs...
-logs/*
-# ...SAUF le fichier de données final qu'on veut récupérer
-!logs/experiment_data.json

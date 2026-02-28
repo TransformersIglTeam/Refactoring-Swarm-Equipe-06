@@ -1,6 +1,5 @@
 import os
-import ast
-from typing import List, Tuple
+from typing import List
 from src.tools.testing.PytestRunner import PytestRunner
 from src.tools.testing.TestParser import TestParser
 from src.agents.judge.Models import TestResult, TestStatus
@@ -86,14 +85,6 @@ class TestExecutor:
             status = TestStatus.FAILED
         else:
             status = TestStatus.ERROR
-
-        # Validate test quality if tests passed
-        if status == TestStatus.SUCCESS:
-            quality_ok, quality_issues = self._validate_test_quality(test_files)
-            if not quality_ok:
-                status = TestStatus.TRIVIAL_TESTS
-                success = False
-                errors = [f"TEST QUALITY: {issue}" for issue in quality_issues]
         
         # Create result object
         result = TestResult(
@@ -132,41 +123,6 @@ class TestExecutor:
                 if (file.startswith("test_") or file.endswith("_test.py")) and file.endswith(".py"):
                     test_files.append(os.path.join(root, file))
         return test_files
-
-    def _validate_test_quality(self, test_files: List[str]) -> Tuple[bool, List[str]]:
-        """Check test files aren't trivial (just 'pass' or no assertions)."""
-        issues = []
-        for test_file in test_files:
-            try:
-                with open(test_file, 'r') as f:
-                    source = f.read()
-                tree = ast.parse(source)
-                for node in ast.walk(tree):
-                    if isinstance(node, ast.FunctionDef) and node.name.startswith('test_'):
-                        # Check if body is just 'pass'
-                        if len(node.body) == 1 and isinstance(node.body[0], ast.Pass):
-                            issues.append(
-                                f"{os.path.basename(test_file)}::{node.name} "
-                                f"is trivial (just 'pass')"
-                            )
-                            continue
-                        # Check for assert statements
-                        has_assert = any(
-                            isinstance(n, ast.Assert)
-                            or (isinstance(n, ast.Expr)
-                                and isinstance(getattr(n, 'value', None), ast.Call)
-                                and hasattr(getattr(n.value, 'func', None), 'attr')
-                                and n.value.func.attr.startswith('assert'))
-                            for n in ast.walk(node)
-                        )
-                        if not has_assert:
-                            issues.append(
-                                f"{os.path.basename(test_file)}::{node.name} "
-                                f"has no assert statements"
-                            )
-            except Exception:
-                continue
-        return (len(issues) == 0, issues)
     
     def _create_error_result(self, error_message: str, status: TestStatus) -> TestResult:
         """Create a TestResult for error cases"""

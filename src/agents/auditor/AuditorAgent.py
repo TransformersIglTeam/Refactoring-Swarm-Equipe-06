@@ -83,31 +83,24 @@ class AuditorAgent(BaseAgent):
             print(f"Failed to create agent: {e}")
             return None
 
-    def audit(self, project_path: str, test_context: str = "") -> str:
+    def audit(self, project_path: str) -> str:
         """
         Main audit loop using tools.
-
-        Args:
-            project_path: Path to the project to audit.
-            test_context: Optional test failure context to include in the audit input.
         """
         # Ensure Sandbox is set (crucial for tools)
         if SandboxSetup.SANDBOX_ROOT is None:
             SandboxSetup.SANDBOX_ROOT = project_path
-
+        
         # Get the sandbox root path for the prompt
         sandbox_root = SandboxSetup.SANDBOX_ROOT
-
+        
         input_text = (
             f"Audit the project in the sandbox directory.\n"
             f"The sandbox root is: {sandbox_root}\n"
             f"All file paths should be relative to the sandbox root (use '.' for current directory, or file names like 'bad_code.py').\n"
-            f"Please analyze BOTH the source code AND test files, determine where the bugs are, create a summary and a TODO list of fixes.\n"
+            f"Please analyze the code, create a summary and a TODO list of fixes.\n"
             f"Save the report to a file named 'audit_report.md' in the sandbox root directory."
         )
-
-        if test_context:
-            input_text += f"\n\n{test_context}"
         
         if self.agent_executor:
             try:

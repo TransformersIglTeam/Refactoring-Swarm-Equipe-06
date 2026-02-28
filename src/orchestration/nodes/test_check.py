@@ -65,18 +65,16 @@ def _handle_test_result(run_result) -> dict:
     """Handle the test run result."""
     if run_result.success:
         logger.info("✅ All unit tests passed! Project is healthy - skipping all agents.")
-        generate_prompt = ""
     else:
         logger.info("Unit tests found but some failed.")
         if run_result.output:
             logger.info(f"Test output:\n{run_result.output[:1000]}")
-        generate_prompt = TestPrompts.get_tests_failing_prompt(run_result.output or "")
-
+    
     return {
         "tests_found": True,
         "tests_passed": run_result.success,
         "is_fixed": run_result.success,
-        "generate_tests_prompt": generate_prompt,
+        "generate_tests_prompt": "",
         "error_context": run_result.output if not run_result.success else "",
         "history": [{
             "agent": "TestCheck",

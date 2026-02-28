@@ -30,13 +30,13 @@ def node_auditor(state: AgentState) -> dict:
             "audit_report": "Auditor missing, skipping"
         }
     
-    # Get the dynamic prompt for test context (failures or missing tests)
+    # Get the dynamic prompt for test generation (if any)
     additional_context = state.get("generate_tests_prompt", "")
-
-    # Run the audit, passing test context as input so the auditor can analyze it
-    report = auditor_agent.audit(state["project_path"], test_context=additional_context)
-
-    # Prepend test context to report so the fixer also sees it
+    
+    # Run the audit
+    report = auditor_agent.audit(state["project_path"])
+    
+    # Prepend test generation instructions if needed
     if additional_context:
         report = f"{additional_context}\n\n{report}"
     

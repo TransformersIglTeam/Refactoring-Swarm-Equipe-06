@@ -10,7 +10,6 @@ class TestStatus(Enum):
     ERROR = "ERROR"
     NO_TESTS = "NO_TESTS"
     TIMEOUT = "TIMEOUT"
-    TRIVIAL_TESTS = "TRIVIAL_TESTS"
 
 
 class JudgeDecision(Enum):

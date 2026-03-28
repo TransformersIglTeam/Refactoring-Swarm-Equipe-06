@@ -3,7 +3,7 @@ import os
 
 
 class PylintRunner:
-    def __init__(self,timeout = 30):
+    def __init__(self, timeout: int = 30) -> None:
         self.timeout = timeout
     def run_analysis(self,target_path): # hada ydir path -> abs path bach nevitiw les problem t3 windows
         target_path = os.path.abspath(target_path)

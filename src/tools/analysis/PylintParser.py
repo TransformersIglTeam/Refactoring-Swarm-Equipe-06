@@ -2,10 +2,8 @@ import json
 
 class PylintResult:
     """A container for parsed Pylint data."""
-    def __init__(self, issues, score=0.0):
-        
-        
-        self.issues = issues  
+    def __init__(self, issues: list, score: float = 0.0) -> None:
+        self.issues = issues
         self.score = score   
         
     def get_critical_issues(self):

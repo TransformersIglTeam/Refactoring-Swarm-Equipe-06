@@ -8,7 +8,7 @@ from typing import Tuple, Optional, Union
 class PytestRunner:
     """Handles low-level pytest execution"""
     
-    def __init__(self, timeout: int = 60):
+    def __init__(self, timeout: int = 60) -> None:
         self.timeout = timeout
     
     def run(self, target_dir: str) -> Tuple[bool, str, str, float]:

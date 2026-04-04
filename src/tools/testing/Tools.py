@@ -1,5 +1,4 @@
 from langchain.tools import BaseTool
-from typing import Any
 import json
 
 from .PytestRunner import PytestRunner
@@ -14,7 +13,7 @@ class PytestTool(BaseTool):
         "execution_time, summary (passed/failed/total), errors (list)."
     )
 
-    def __init__(self, timeout: int = 60):
+    def __init__(self, timeout: int = 60) -> None:
         super().__init__()
         self.runner = PytestRunner(timeout=timeout)
 

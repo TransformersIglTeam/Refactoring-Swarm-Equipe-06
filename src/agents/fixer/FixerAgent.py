@@ -2,8 +2,6 @@ import os
 from typing import List, Optional
 
 from langchain.agents import AgentExecutor
-
-from langchain_google_genai import GoogleGenerativeAI
 from langchain.tools import BaseTool
 
 from src.agents.judge.BaseAgent import BaseAgent
@@ -48,10 +46,11 @@ class FixerAgent(BaseAgent):
         try:
             from langchain.agents import initialize_agent, AgentType
             from src.agents.fixer.prompts import FIXER_SYSTEM_PROMPT
-            
+
             agent_kwargs = {
                 "system_message": FIXER_SYSTEM_PROMPT,
-                "input_variables": ["input", "agent_scratchpad"]
+                "input_variables": ["input", "agent_scratchpad"],
+                "prefix_messages": "You are a Python engineer that specializes in fixing Python code.",
             }
 
             return initialize_agent(
@@ -60,7 +59,7 @@ class FixerAgent(BaseAgent):
                 agent=AgentType.STRUCTURED_CHAT_ZERO_SHOT_REACT_DESCRIPTION,
                 verbose=True,
                 handle_parsing_errors=True,
-                agent_kwargs={"system_message": FIXER_SYSTEM_PROMPT, "prefix_messages": "you are a python engineer that specialize in python code fixing"} 
+                agent_kwargs=agent_kwargs,
             )
         except Exception as e:
             print(f"Failed to create agent: {e}")

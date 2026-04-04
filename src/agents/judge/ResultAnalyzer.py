@@ -181,7 +181,7 @@ class ResultAnalyzer:
                     # Log LLM interaction
                     try:
                         log_experiment(
-                            agent_name="self.agent_name",
+                            agent_name=self.agent_name,
                             model_used=self.model_name,
                             action=ActionType.ANALYSIS,
                             details={

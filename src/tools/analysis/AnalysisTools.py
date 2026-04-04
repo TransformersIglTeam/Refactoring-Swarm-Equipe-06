@@ -1,5 +1,4 @@
 from langchain.tools import BaseTool
-from typing import Optional
 import json
 from pathlib import Path
 

@@ -1,12 +1,11 @@
 from langchain.tools import BaseTool
 from pathlib import Path
-from typing import Optional
 
 from src.utils.PathValidator import validate_path
 from src.utils import SandboxSetup
 
 class ReadTool(BaseTool):
-    name = "read file"
+    name: str = "read file"
     description: str = (
         "Reads and returns the content of a file. "
         "Input should be a file path as string. "
